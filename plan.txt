@@ -1,0 +1,103 @@
+RAW B2C LTD WEBSITE PROJECT SUMMARY
+Goal:
+Build a professional company profile website for RAW B2C LTD with an admin system.
+Technology Stack:
+Frontend:
+- HTML5
+- Tailwind CSS
+- JavaScript
+- Responsive design
+- Animations
+Backend:
+- PHP
+- MySQL
+Hosting:
+- Shared hosting (Hostinger recommended)
+- cPanel
+- MySQL database
+Design:
+- Green and white corporate theme
+- Premium modern UI
+- Smooth animations
+- Hover effects
+- Scroll reveal animations
+Public Website Features:
+1. Home Page
+- Hero section
+- About section
+- Company ecosystem (RAW HUB, Mi Boo, Mi Look)
+- Services
+- Impact statistics
+- Gallery
+- Blog preview
+- Reviews
+- Contact footer
+2. Worker Registration
+- Workers register skills
+- Admin sees worker details
+- Workers are hidden from public users
+3. Gallery
+- Upload images/videos
+- Projects
+- Workers
+- Products
+- Community activities
+4. Blog
+- News
+- Company updates
+- Success stories
+5. Reviews
+- Customer reviews
+- Ratings
+- Admin approval
+6. Products/Services Pages
+- Details
+- Benefits
+- How it works
+- Contact information
+7. Customer Rewards
+- Manual reward tracking initially
+- Customer reward claims
+Admin Dashboard:
+- Single admin account
+- Manage workers
+- Manage gallery
+- Manage blog
+- Manage products
+- Manage reviews
+- Manage rewards
+Database Tables:
+- admins
+- workers
+- gallery
+- blogs
+- products
+- reviews
+- customers
+- rewards
+- reward_claims
+Project Structure:
+raw-b2c/
+- index.php
+- admin/
+- assets/
+- uploads/
+- config/database.php
+- includes/header.php
+- includes/navbar.php
+- includes/footer.php
+- pages/
+Development Plan:
+1. Setup project
+2. Build UI from Stitch
+3. Database connection
+4. Admin authentication
+5. Admin dashboard
+6. Worker system
+7. Gallery system
+8. Blog system
+9. Products
+10. Reviews
+11. Rewards
+12. Deployment
+This project is built as a real production website optimized for shared hosting.

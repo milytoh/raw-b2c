@@ -1,0 +1,33 @@
+Database Configuration and Schema Setup Plan
+This plan covers the establishment of the MySQL database connection and the design of the core database schema required to power the RAW B2C LTD web application.
+
+Open Questions
+IMPORTANT
+
+Do you already have a MySQL database created locally (e.g., via phpMyAdmin on XAMPP) that we should connect to? If so, what is the database name? (I will assume rawb2c_db by default).
+Would you like me to write a PHP script (setup_database.php) that automatically creates all these tables and inserts a default Admin user when you run it once in your browser?
+Proposed Changes
+1. Database Connection File
+[NEW] config/database.php
+Create a reusable PDO connection script that securely connects to the MySQL database.
+Establish error handling to catch and display connection issues during development.
+2. Database Schema (Tables)
+We need to design the tables to hold the data for the public site and admin dashboard.
+
+admins: To handle the single admin account login.
+Columns: id, email, password_hash, created_at.
+workers: To store workforce registration submissions.
+Columns: id, first_name, last_name, email, phone, skill_area, experience_years, skills_details, cv_file_path, created_at.
+gallery: To manage media across Projects, Workers, Products, and Community.
+Columns: id, category, title, image_path, file_size, uploaded_at.
+blog_posts: To handle news and updates.
+Columns: id, title, category, content, image_path, status (Draft/Published), created_at, updated_at.
+products: To track ecosystem products and services.
+Columns: id, name, brand (RAW HUB, Mi Boo, Mi Look), image_path, status (Active/Draft), created_at.
+reviews: To handle customer feedback.
+Columns: id, customer_name, email, rating, review_text, status (Pending/Approved), created_at.
+rewards: To manually track customer reward claims.
+Columns: id, customer_name, reward_type, points_value, status (Pending/Completed), created_at.
+Verification Plan
+Ensure config/database.php successfully connects without throwing PDO exceptions.
+If approved, verify the execution of setup_database.php correctly creates all tables in the database.

@@ -1,0 +1,46 @@
+<?php
+$page_title = 'Admin Login | RAW B2C LTD';
+include 'includes/header.php';
+?>
+
+<div class="flex-1 flex items-center justify-center p-6 bg-surface-container-low">
+    <div class="w-full max-w-md bg-white rounded-[32px] shadow-premium p-10 border border-outline-variant/10">
+        <div class="text-center mb-8">
+            <h1 class="font-headline-md text-3xl font-bold text-primary mb-2">RAW ADMIN</h1>
+            <p class="text-on-surface-variant text-sm">Sign in to access the dashboard</p>
+        </div>
+        
+        <form action="index.php" method="POST" class="space-y-6">
+            <div>
+                <label class="block text-sm font-bold text-primary mb-2">Email Address</label>
+                <div class="relative">
+                    <span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-on-surface-variant/50">mail</span>
+                    <input type="email" name="email" required class="w-full bg-surface border border-outline-variant/30 rounded-xl pl-12 pr-4 py-3 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all" placeholder="admin@rawb2c.com">
+                </div>
+            </div>
+            
+            <div>
+                <label class="block text-sm font-bold text-primary mb-2">Password</label>
+                <div class="relative">
+                    <span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-on-surface-variant/50">lock</span>
+                    <input type="password" name="password" required class="w-full bg-surface border border-outline-variant/30 rounded-xl pl-12 pr-4 py-3 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all" placeholder="••••••••">
+                </div>
+            </div>
+            
+            <div class="flex items-center justify-between">
+                <label class="flex items-center gap-2 cursor-pointer">
+                    <input type="checkbox" class="form-checkbox text-primary rounded focus:ring-primary">
+                    <span class="text-sm text-on-surface-variant">Remember me</span>
+                </label>
+                <a href="#" class="text-sm font-bold text-primary hover:underline">Forgot password?</a>
+            </div>
+            
+            <button type="submit" class="w-full bg-primary text-on-primary px-8 py-4 rounded-xl font-bold shadow-lg hover:shadow-xl hover:-translate-y-0.5 transition-all flex justify-center items-center gap-2">
+                Sign In
+                <span class="material-symbols-outlined text-sm">arrow_forward</span>
+            </button>
+        </form>
+    </div>
+</div>
+
+<?php include 'includes/footer.php'; ?>
