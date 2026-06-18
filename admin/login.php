@@ -9,8 +9,19 @@ include 'includes/header.php';
             <h1 class="font-headline-md text-3xl font-bold text-primary mb-2">RAW ADMIN</h1>
             <p class="text-on-surface-variant text-sm">Sign in to access the dashboard</p>
         </div>
-        
-        <form action="index.php" method="POST" class="space-y-6">
+        <div class="text-center mb-8">
+    ...
+</div>
+
+        <?php if(isset($_SESSION['error'])): ?>
+        <div class="mb-4 bg-red-100 border border-red-300 text-red-700 px-4 py-3 rounded-xl">
+            <?= $_SESSION['error']; ?>
+        </div>
+        <?php unset($_SESSION['error']); ?>
+        <?php endif; ?>
+
+
+        <form action="auth.php" method="POST" class="space-y-6">
             <div>
                 <label class="block text-sm font-bold text-primary mb-2">Email Address</label>
                 <div class="relative">
@@ -42,5 +53,17 @@ include 'includes/header.php';
         </form>
     </div>
 </div>
-
+ 
 <?php include 'includes/footer.php'; ?>
+
+
+<!-- $2y$10$dDZ0uBmInldLpghTvxVvXudsC9J4cgUXHKv7rxm5tKiOIni.qLVx6 -->
+
+
+<!-- <?php
+echo password_hash('rawb2c5555', PASSWORD_DEFAULT);
+?>  -->
+
+
+<!-- Email: admin@rawb2c.com
+Password: rawb2c5555 -->

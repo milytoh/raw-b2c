@@ -36,7 +36,7 @@
 
     <!-- Sidebar Footer (Logout) -->
     <div class="p-4 border-t border-on-primary/10">
-        <a href="login.php" class="flex items-center gap-3 px-4 py-3 rounded-xl text-error-container hover:bg-error hover:text-on-error transition-colors">
+        <a href="logout.php" class="flex items-center gap-3 px-4 py-3 rounded-xl text-error-container hover:bg-error hover:text-on-error transition-colors">
             <span class="material-symbols-outlined">logout</span>
             <span class="font-semibold">Logout</span>
         </a>

@@ -1,7 +1,9 @@
 <?php
+include 'includes/protect.php';
 $page_title = 'Manage Rewards | Admin | RAW B2C LTD';
 include 'includes/header.php';
 include 'includes/sidebar.php';
+
 ?>
 
 <div class="flex-1 flex flex-col h-screen overflow-hidden bg-surface">

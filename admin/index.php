@@ -1,8 +1,12 @@
-<?php
+<!-- <?php
+include 'includes/protect.php';
 $page_title = 'Dashboard | RAW B2C LTD';
 include 'includes/header.php';
 include 'includes/sidebar.php';
-?>
+
+?> -->
+
+
 
 <!-- Main Content Area -->
 <div class="flex-1 flex flex-col h-screen overflow-hidden bg-surface">
