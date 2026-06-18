@@ -1,6 +1,70 @@
 <?php
 include 'includes/protect.php';
+require '../config/database.php';
+
 $page_title = 'Manage Gallery | Admin | RAW B2C LTD';
+
+
+// pagination
+
+$limit = 6;
+
+$page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
+
+if($page < 1){
+    $page = 1;
+}
+
+
+$offset = ($page - 1) * $limit;
+
+
+
+// count
+
+$count = $pdo->query("
+SELECT COUNT(*) FROM gallery
+");
+
+
+$totalItems = $count->fetchColumn();
+
+$totalPages = ceil($totalItems/$limit);
+
+
+
+
+// fetch
+
+$stmt = $pdo->prepare("
+SELECT *
+FROM gallery
+ORDER BY uploaded_at DESC
+LIMIT :limit OFFSET :offset
+");
+
+
+$stmt->bindValue(
+":limit",
+$limit,
+PDO::PARAM_INT
+);
+
+
+$stmt->bindValue(
+":offset",
+$offset,
+PDO::PARAM_INT
+);
+
+
+$stmt->execute();
+
+
+$gallery = $stmt->fetchAll();
+
+
+
 include 'includes/header.php';
 include 'includes/sidebar.php';
 
@@ -17,9 +81,18 @@ include 'includes/sidebar.php';
                     <h1 class="font-headline-md text-3xl font-bold text-primary mb-2">Manage Gallery</h1>
                     <p class="text-on-surface-variant">Upload and manage media for Projects, Workers, Products, and Community.</p>
                 </div>
-                <button class="bg-primary text-on-primary px-6 py-3 rounded-xl font-bold flex items-center gap-2 hover:bg-primary-container transition-colors shadow-md">
-                    <span class="material-symbols-outlined">add_photo_alternate</span> Upload Media
-                </button>
+               <a href="add-gallery.php"
+
+                    class="bg-primary text-on-primary px-6 py-3 rounded-xl font-bold flex items-center gap-2 hover:bg-primary-container transition-colors shadow-md">
+
+
+                    <span class="material-symbols-outlined">
+                    add_photo_alternate
+                    </span>
+
+                    Upload Media
+
+                    </a>
             </div>
 
             <!-- Filter Tabs -->
