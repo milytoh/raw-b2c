@@ -17,6 +17,73 @@ $footer_contact = 'contact.php';
 
 include '../includes/header.php';
 include '../includes/navbar.php';
+
+require '../config/database.php';
+
+
+$category = $_GET['category'] ?? 'All';
+
+$limit = 12;
+
+$page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
+
+if($page < 1){
+    $page = 1;
+}
+
+$offset = ($page - 1) * $limit;
+
+
+
+if($category == "All"){
+
+    $countStmt = $pdo->query("
+        SELECT COUNT(*)
+        FROM gallery
+    ");
+
+    $totalItems = $countStmt->fetchColumn();
+
+
+    $stmt = $pdo->prepare("
+        SELECT *
+        FROM gallery
+        ORDER BY uploaded_at DESC
+        LIMIT $limit OFFSET $offset
+    ");
+
+    $stmt->execute();
+
+}
+else{
+
+    $countStmt = $pdo->prepare("
+        SELECT COUNT(*)
+        FROM gallery
+        WHERE category = ?
+    ");
+
+    $countStmt->execute([$category]);
+
+    $totalItems = $countStmt->fetchColumn();
+
+
+
+    $stmt = $pdo->prepare("
+        SELECT *
+        FROM gallery
+        WHERE category = ?
+        ORDER BY uploaded_at DESC
+        LIMIT $limit OFFSET $offset
+    ");
+
+    $stmt->execute([$category]);
+
+}
+
+$galleryItems = $stmt->fetchAll();
+
+$totalPages = ceil($totalItems / $limit);
 ?>
 
 <!-- Hero Section -->
@@ -35,93 +102,155 @@ include '../includes/navbar.php';
 
 <!-- Filter Buttons -->
 <section class="py-12 bg-surface-container-low border-b border-outline-variant/20">
-    <div class="max-w-container-max mx-auto px-margin-desktop text-center reveal">
+    <div class="max-w-container-max mx-auto px-margin-desktop text-center">
+
         <div class="flex flex-wrap justify-center gap-4">
-            <button class="bg-primary text-white px-6 py-2 rounded-full font-bold text-sm">All</button>
-            <button class="bg-white text-on-surface-variant hover:text-primary px-6 py-2 rounded-full font-bold text-sm border border-outline-variant/30 hover:border-primary transition-colors">Projects</button>
-            <button class="bg-white text-on-surface-variant hover:text-primary px-6 py-2 rounded-full font-bold text-sm border border-outline-variant/30 hover:border-primary transition-colors">Workers</button>
-            <button class="bg-white text-on-surface-variant hover:text-primary px-6 py-2 rounded-full font-bold text-sm border border-outline-variant/30 hover:border-primary transition-colors">Products</button>
-            <button class="bg-white text-on-surface-variant hover:text-primary px-6 py-2 rounded-full font-bold text-sm border border-outline-variant/30 hover:border-primary transition-colors">Community</button>
+
+            <?php
+
+            $filters = [
+                'All',
+                'Projects',
+                'Workers',
+                'Products',
+                'Community'
+            ];
+
+            foreach($filters as $filter):
+
+            ?>
+
+            <a
+                href="?category=<?= urlencode($filter) ?>"
+                class="px-6 py-2 rounded-full font-bold text-sm transition-colors
+
+                <?= $category == $filter
+                    ? 'bg-primary text-white'
+                    : 'bg-white text-on-surface-variant border border-outline-variant/30 hover:border-primary hover:text-primary'
+                ?>">
+
+                <?= $filter ?>
+
+            </a>
+
+            <?php endforeach; ?>
+
         </div>
+
     </div>
 </section>
 
 <!-- Gallery Grid -->
 <section class="py-section-gap px-margin-desktop max-w-container-max mx-auto">
-    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-        <!-- Item 1 -->
-        <div class="reveal overflow-hidden rounded-3xl group shadow-premium border border-outline-variant/10">
-            <div class="relative h-64 overflow-hidden">
-                <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=600" alt="Gallery Image" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
-                <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                    <span class="text-white font-bold bg-primary/80 px-4 py-2 rounded-lg">Projects</span>
-                </div>
-            </div>
-        </div>
-        <!-- Item 2 -->
-        <div class="reveal delay-100 overflow-hidden rounded-3xl group shadow-premium border border-outline-variant/10">
-            <div class="relative h-64 overflow-hidden">
-                <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&q=80&w=600" alt="Gallery Image" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
-                <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                    <span class="text-white font-bold bg-secondary/80 px-4 py-2 rounded-lg">Products</span>
-                </div>
-            </div>
-        </div>
-        <!-- Item 3 -->
-        <div class="reveal delay-200 overflow-hidden rounded-3xl group shadow-premium border border-outline-variant/10">
-            <div class="relative h-64 overflow-hidden">
-                <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&q=80&w=600" alt="Gallery Image" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
-                <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                    <span class="text-white font-bold bg-tertiary/80 px-4 py-2 rounded-lg">Workers</span>
-                </div>
-            </div>
-        </div>
-        <!-- Item 4 -->
-        <div class="reveal overflow-hidden rounded-3xl group shadow-premium border border-outline-variant/10 md:col-span-2">
-            <div class="relative h-64 md:h-80 overflow-hidden">
-                <img src="https://images.unsplash.com/photo-1582213782179-e0d53f98f2ca?auto=format&fit=crop&q=80&w=1200" alt="Gallery Image" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
-                <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                    <span class="text-white font-bold bg-primary/80 px-4 py-2 rounded-lg">Community</span>
-                </div>
-            </div>
-        </div>
-        <!-- Item 5 -->
-        <div class="reveal delay-100 overflow-hidden rounded-3xl group shadow-premium border border-outline-variant/10">
-            <div class="relative h-64 md:h-80 overflow-hidden">
-                <img src="https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&q=80&w=600" alt="Gallery Image" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
-                <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                    <span class="text-white font-bold bg-secondary/80 px-4 py-2 rounded-lg">Products</span>
-                </div>
-            </div>
-        </div>
-        <!-- Item 6 -->
-        <div class="reveal overflow-hidden rounded-3xl group shadow-premium border border-outline-variant/10">
-            <div class="relative h-64 overflow-hidden">
-                <img src="https://images.unsplash.com/photo-1556761175-4b46a572b786?auto=format&fit=crop&q=80&w=600" alt="Gallery Image" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
-                <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                    <span class="text-white font-bold bg-primary/80 px-4 py-2 rounded-lg">Workers</span>
-                </div>
-            </div>
-        </div>
-        <!-- Item 7 -->
-        <div class="reveal delay-100 overflow-hidden rounded-3xl group shadow-premium border border-outline-variant/10">
-            <div class="relative h-64 overflow-hidden">
-                <img src="https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&q=80&w=600" alt="Gallery Image" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
-                <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                    <span class="text-white font-bold bg-primary/80 px-4 py-2 rounded-lg">Projects</span>
-                </div>
-            </div>
-        </div>
-        <!-- Item 8 -->
-        <div class="reveal delay-200 overflow-hidden rounded-3xl group shadow-premium border border-outline-variant/10">
-            <div class="relative h-64 overflow-hidden">
-                <img src="https://images.unsplash.com/photo-1542838132-92c53300491e?auto=format&fit=crop&q=80&w=600" alt="Gallery Image" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
-                <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                    <span class="text-white font-bold bg-tertiary/80 px-4 py-2 rounded-lg">Community</span>
-                </div>
-            </div>
-        </div>
+
+<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+
+
+<?php if(count($galleryItems) > 0): ?>
+
+
+<?php foreach($galleryItems as $item): ?>
+
+
+<div class="relative overflow-hidden rounded-3xl shadow-premium group">
+
+
+    <img
+    src="../uploads/gallery/<?= htmlspecialchars($item['image_path']) ?>"
+    alt="<?= htmlspecialchars($item['title']) ?>"
+    class="w-full h-72 object-cover group-hover:scale-110 transition-transform duration-700">
+
+
+
+    <!-- Overlay -->
+    <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent"></div>
+
+
+
+    <div class="absolute bottom-0 left-0 right-0 p-6">
+
+
+        <span class="inline-block bg-primary text-white text-xs font-bold px-3 py-1 rounded-full mb-3">
+
+            <?= htmlspecialchars($item['category']) ?>
+
+        </span>
+
+
+
+        <h3 class="text-white text-xl font-bold mb-2">
+
+            <?= htmlspecialchars($item['title']) ?>
+
+        </h3>
+
+
+
+        <p class="text-white/70 text-sm">
+
+            <?= date(
+                'M d, Y',
+                strtotime($item['uploaded_at'])
+            ) ?>
+
+        </p>
+
+
     </div>
+
+
+</div>
+
+
+<?php endforeach; ?>
+
+
+<?php else: ?>
+
+
+<div class="col-span-full text-center py-20">
+
+    <h3 class="text-xl font-bold text-primary">
+        No Images Found
+    </h3>
+
+</div>
+
+
+<?php endif; ?>
+
+
+</div>
+
 </section>
+
+<?php if($totalPages > 1): ?>
+
+<section class="pb-20">
+
+    <div class="flex justify-center gap-2">
+
+        <?php for($i=1; $i <= $totalPages; $i++): ?>
+
+            <a
+                href="?page=<?= $i ?>&category=<?= urlencode($category) ?>"
+                class="px-4 py-2 rounded-lg font-bold
+
+                <?= $page == $i
+                    ? 'bg-primary text-white'
+                    : 'bg-white border border-outline-variant/30 hover:border-primary'
+                ?>">
+
+                <?= $i ?>
+
+            </a>
+
+        <?php endfor; ?>
+
+    </div>
+
+</section>
+
+<?php endif; ?>
 
 <?php include '../includes/footer.php'; ?>
