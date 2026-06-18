@@ -105,57 +105,173 @@ include 'includes/sidebar.php';
             </div>
 
             <!-- Gallery Grid -->
-            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-                <!-- Media Item 1 -->
-                <div class="bg-white rounded-2xl overflow-hidden shadow-sm border border-outline-variant/10 group relative">
-                    <div class="h-40 overflow-hidden">
-                        <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=600" alt="Media" class="w-full h-full object-cover">
-                    </div>
-                    <div class="p-3">
-                        <p class="text-sm font-bold text-primary truncate">HQ Building Interior</p>
-                        <p class="text-xs text-on-surface-variant">Projects • 2.4 MB</p>
-                    </div>
-                    <!-- Overlay Actions -->
-                    <div class="absolute top-2 right-2 flex gap-1 opacity-0 group-hover:opacity-100 transition-opacity">
-                        <button class="bg-white text-primary p-1 rounded shadow-sm hover:bg-surface-container"><span class="material-symbols-outlined text-sm">edit</span></button>
-                        <button class="bg-error text-white p-1 rounded shadow-sm hover:bg-error-container"><span class="material-symbols-outlined text-sm">delete</span></button>
-                    </div>
-                </div>
+           <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
 
-                <!-- Media Item 2 -->
-                <div class="bg-white rounded-2xl overflow-hidden shadow-sm border border-outline-variant/10 group relative">
-                    <div class="h-40 overflow-hidden">
-                        <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&q=80&w=600" alt="Media" class="w-full h-full object-cover">
-                    </div>
-                    <div class="p-3">
-                        <p class="text-sm font-bold text-primary truncate">Mi Boo Shoes</p>
-                        <p class="text-xs text-on-surface-variant">Products • 1.8 MB</p>
-                    </div>
-                    <!-- Overlay Actions -->
-                    <div class="absolute top-2 right-2 flex gap-1 opacity-0 group-hover:opacity-100 transition-opacity">
-                        <button class="bg-white text-primary p-1 rounded shadow-sm hover:bg-surface-container"><span class="material-symbols-outlined text-sm">edit</span></button>
-                        <button class="bg-error text-white p-1 rounded shadow-sm hover:bg-error-container"><span class="material-symbols-outlined text-sm">delete</span></button>
-                    </div>
-                </div>
 
-                <!-- Media Item 3 -->
-                <div class="bg-white rounded-2xl overflow-hidden shadow-sm border border-outline-variant/10 group relative">
-                    <div class="h-40 overflow-hidden">
-                        <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&q=80&w=600" alt="Media" class="w-full h-full object-cover">
-                    </div>
-                    <div class="p-3">
-                        <p class="text-sm font-bold text-primary truncate">Team Meeting</p>
-                        <p class="text-xs text-on-surface-variant">Workers • 3.1 MB</p>
-                    </div>
-                    <!-- Overlay Actions -->
-                    <div class="absolute top-2 right-2 flex gap-1 opacity-0 group-hover:opacity-100 transition-opacity">
-                        <button class="bg-white text-primary p-1 rounded shadow-sm hover:bg-surface-container"><span class="material-symbols-outlined text-sm">edit</span></button>
-                        <button class="bg-error text-white p-1 rounded shadow-sm hover:bg-error-container"><span class="material-symbols-outlined text-sm">delete</span></button>
-                    </div>
-                </div>
-            </div>
+<?php if(count($gallery)>0): ?>
+
+
+<?php foreach($gallery as $item): ?>
+
+
+<div class="bg-white rounded-2xl overflow-hidden shadow-sm border border-outline-variant/10 group relative">
+
+
+
+<div class="h-40 overflow-hidden">
+
+
+<img
+
+src="../uploads/gallery/<?= $item['image_path'] ?>"
+
+class="w-full h-full object-cover">
+
+
+</div>
+
+
+
+
+
+<div class="p-3">
+
+
+<p class="text-sm font-bold text-primary truncate">
+
+<?= htmlspecialchars($item['title']) ?>
+
+</p>
+
+
+
+<p class="text-xs text-on-surface-variant">
+
+
+<?= htmlspecialchars($item['category']) ?>
+
+•
+<?= $item['file_size'] ?>
+
+
+</p>
+
+
+
+</div>
+
+
+
+
+
+
+<div class="absolute top-2 right-2 flex gap-1 opacity-0 group-hover:opacity-100 transition">
+
+
+<a href="edit-gallery.php?id=<?= $item['id'] ?>"
+
+class="bg-white text-primary p-1 rounded shadow">
+
+
+<span class="material-symbols-outlined text-sm">
+edit
+</span>
+
+
+</a>
+
+
+
+
+
+
+<a href="delete-gallery.php?id=<?= $item['id'] ?>"
+
+onclick="return confirm('Delete this image?')"
+
+class="bg-error text-white p-1 rounded shadow">
+
+
+<span class="material-symbols-outlined text-sm">
+delete
+</span>
+
+
+</a>
+
+
+
+</div>
+
+
+
+</div>
+
+
+
+<?php endforeach; ?>
+
+
+
+<?php else: ?>
+
+
+<p class="col-span-4 text-center">
+
+No media uploaded.
+
+</p>
+
+
+<?php endif; ?>
+
+
+
+</div>
+
+
 
         </div>
+
+        <?php if($totalPages > 1): ?>
+
+
+<div class="flex justify-center gap-2 mt-10">
+
+
+<?php for($i=1;$i<=$totalPages;$i++): ?>
+
+
+<a
+
+href="gallery.php?page=<?=$i?>"
+
+class="px-4 py-2 rounded-xl font-bold
+
+<?= 
+$page==$i
+?
+'bg-primary text-on-primary'
+:
+'bg-white text-primary border'
+?>
+
+">
+
+
+<?=$i?>
+
+
+</a>
+
+
+<?php endfor; ?>
+
+
+</div>
+
+
+<?php endif; ?>
     </main>
 </div>
 
