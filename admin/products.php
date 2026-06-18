@@ -1,9 +1,20 @@
 <?php
 include 'includes/protect.php';
+require '../config/database.php';
+
 $page_title = 'Manage Products | Admin | RAW B2C LTD';
+
+// Get all products
+$stmt = $pdo->query("
+    SELECT *
+    FROM products
+    ORDER BY created_at DESC
+");
+
+$products = $stmt->fetchAll();
+
 include 'includes/header.php';
 include 'includes/sidebar.php';
-
 ?>
 
 <div class="flex-1 flex flex-col h-screen overflow-hidden bg-surface">
@@ -17,9 +28,16 @@ include 'includes/sidebar.php';
                     <h1 class="font-headline-md text-3xl font-bold text-primary mb-2">Manage Products & Services</h1>
                     <p class="text-on-surface-variant">Update details, benefits, and statuses for ecosystem offerings.</p>
                 </div>
-                <button class="bg-primary text-on-primary px-6 py-3 rounded-xl font-bold flex items-center gap-2 hover:bg-primary-container transition-colors shadow-md">
-                    <span class="material-symbols-outlined">add_circle</span> Add Product
-                </button>
+                <a href="add-product.php"
+class="bg-primary text-on-primary px-6 py-3 rounded-xl font-bold flex items-center gap-2 hover:bg-primary-container transition-colors shadow-md">
+
+<span class="material-symbols-outlined">
+add_circle
+</span>
+
+Add Product
+
+</a>
             </div>
 
             <!-- Table Container -->
@@ -35,53 +53,102 @@ include 'includes/sidebar.php';
                                 <th class="py-4 px-6 font-bold text-right">Actions</th>
                             </tr>
                         </thead>
-                        <tbody class="text-sm">
-                            <!-- Placeholder Row 1 -->
-                            <tr class="border-b border-outline-variant/10 hover:bg-surface-container-low/50 transition-colors">
-                                <td class="py-4 px-6">
-                                    <div class="w-12 h-12 rounded bg-surface-container overflow-hidden">
-                                        <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=100&q=80" alt="Product" class="w-full h-full object-cover">
-                                    </div>
-                                </td>
-                                <td class="py-4 px-6 font-semibold text-primary">Co-working Space Pass</td>
-                                <td class="py-4 px-6"><span class="bg-primary-fixed/50 text-primary px-2 py-1 rounded-md text-xs font-bold">RAW HUB</span></td>
-                                <td class="py-4 px-6"><span class="bg-secondary-container text-on-secondary-container px-2 py-1 rounded text-xs font-bold">Active</span></td>
-                                <td class="py-4 px-6 text-right space-x-2">
-                                    <button class="text-primary hover:text-primary-container p-1"><span class="material-symbols-outlined text-sm">edit</span></button>
-                                    <button class="text-error hover:text-error-container p-1"><span class="material-symbols-outlined text-sm">delete</span></button>
-                                </td>
-                            </tr>
-                            <!-- Placeholder Row 2 -->
-                            <tr class="border-b border-outline-variant/10 hover:bg-surface-container-low/50 transition-colors">
-                                <td class="py-4 px-6">
-                                    <div class="w-12 h-12 rounded bg-surface-container overflow-hidden">
-                                        <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=100&q=80" alt="Product" class="w-full h-full object-cover">
-                                    </div>
-                                </td>
-                                <td class="py-4 px-6 font-semibold text-primary">Premium Sneakers</td>
-                                <td class="py-4 px-6"><span class="bg-secondary-container/50 text-secondary px-2 py-1 rounded-md text-xs font-bold">Mi Boo</span></td>
-                                <td class="py-4 px-6"><span class="bg-secondary-container text-on-secondary-container px-2 py-1 rounded text-xs font-bold">Active</span></td>
-                                <td class="py-4 px-6 text-right space-x-2">
-                                    <button class="text-primary hover:text-primary-container p-1"><span class="material-symbols-outlined text-sm">edit</span></button>
-                                    <button class="text-error hover:text-error-container p-1"><span class="material-symbols-outlined text-sm">delete</span></button>
-                                </td>
-                            </tr>
-                            <!-- Placeholder Row 3 -->
-                            <tr class="hover:bg-surface-container-low/50 transition-colors">
-                                <td class="py-4 px-6">
-                                    <div class="w-12 h-12 rounded bg-surface-container overflow-hidden flex items-center justify-center">
-                                        <span class="material-symbols-outlined text-outline-variant">image</span>
-                                    </div>
-                                </td>
-                                <td class="py-4 px-6 font-semibold text-primary">Summer Collection Dress</td>
-                                <td class="py-4 px-6"><span class="bg-tertiary-fixed/50 text-tertiary px-2 py-1 rounded-md text-xs font-bold">Mi Look</span></td>
-                                <td class="py-4 px-6"><span class="bg-surface-container-high text-on-surface px-2 py-1 rounded text-xs font-bold">Draft</span></td>
-                                <td class="py-4 px-6 text-right space-x-2">
-                                    <button class="text-primary hover:text-primary-container p-1"><span class="material-symbols-outlined text-sm">edit</span></button>
-                                    <button class="text-error hover:text-error-container p-1"><span class="material-symbols-outlined text-sm">delete</span></button>
-                                </td>
-                            </tr>
-                        </tbody>
+                       <tbody class="text-sm">
+   <?php if (count($products) > 0): ?>
+        
+        <?php foreach ($products as $product): ?>
+
+            <?php
+            // Brand Badge Colors
+            $brandClass = 'bg-primary-fixed/50 text-primary';
+
+            if ($product['brand'] == 'Mi Boo') {
+                $brandClass = 'bg-secondary-container/50 text-secondary';
+            }
+
+            if ($product['brand'] == 'Mi Look') {
+                $brandClass = 'bg-tertiary-fixed/50 text-tertiary';
+            }
+
+            // Status Badge Colors
+            $statusClass = $product['status'] == 'Active'
+                ? 'bg-secondary-container text-on-secondary-container'
+                : 'bg-surface-container-high text-on-surface';
+            ?>
+
+            <tr class="border-b border-outline-variant/10 hover:bg-surface-container-low/50 transition-colors">
+
+                <!-- Image -->
+                <td class="py-4 px-6">
+                    <div class="w-12 h-12 rounded bg-surface-container overflow-hidden flex items-center justify-center">
+
+                        <?php if (!empty($product['image_path'])): ?>
+                            <img
+                                src="../uploads/products/<?php echo $product['image_path']; ?>"
+                                alt="<?php echo htmlspecialchars($product['name']); ?>"
+                                class="w-full h-full object-cover">
+                        <?php else: ?>
+                            <span class="material-symbols-outlined text-outline-variant">
+                                image
+                            </span>
+                        <?php endif; ?>
+
+                    </div>
+                </td>
+
+                <!-- Product Name -->
+                <td class="py-4 px-6 font-semibold text-primary">
+                    <?php echo htmlspecialchars($product['name']); ?>
+                </td>
+
+                <!-- Brand -->
+                <td class="py-4 px-6">
+                    <span class="<?php echo $brandClass; ?> px-2 py-1 rounded-md text-xs font-bold">
+                        <?php echo htmlspecialchars($product['brand']); ?>
+                    </span>
+                </td>
+
+                <!-- Status -->
+                <td class="py-4 px-6">
+                    <span class="<?php echo $statusClass; ?> px-2 py-1 rounded text-xs font-bold">
+                        <?php echo $product['status']; ?>
+                    </span>
+                </td>
+
+                <!-- Actions -->
+                <td class="py-4 px-6 text-right space-x-2">
+
+                    <a href="edit-product.php?id=<?php echo $product['id']; ?>"
+                       class="text-primary hover:text-primary-container p-1">
+                        <span class="material-symbols-outlined text-sm">
+                            edit
+                        </span>
+                    </a>
+
+                    <a href="delete-product.php?id=<?php echo $product['id']; ?>"
+                       onclick="return confirm('Delete this product?')"
+                       class="text-error hover:text-error-container p-1">
+                        <span class="material-symbols-outlined text-sm">
+                            delete
+                        </span>
+                    </a>
+
+                </td>
+
+            </tr>
+
+        <?php endforeach; ?>
+
+    <?php else: ?>
+
+        <tr>
+            <td colspan="5" class="py-10 text-center text-on-surface-variant">
+                No products found.
+            </td>
+        </tr>
+
+    <?php endif; ?>
+</tbody>
                     </table>
                 </div>
             </div>

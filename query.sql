@@ -66,12 +66,74 @@ CREATE TABLE rewards (
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
-INSERT INTO admins (email, password_hash)
-VALUES (
-'admin@rawb2c.com',
-'$2y$10$TKh8H1.PfQx37YgCzwiKb.KjNyWgaHb9cbcoQgdIVFlYg7B77UdFm'
-);
 
-UPDATE admins
-SET password_hash='$2y$10$dDZ0uBmInldLpghTvxVvXudsC9J4cgUXHKv7rxm5tKiOIni.qLVx6'
-WHERE email='admin@rawb2c.com';
+
+ALTER TABLE products
+ADD COLUMN description TEXT AFTER brand,
+ADD COLUMN price DECIMAL(10,2) DEFAULT 0 AFTER description;
+
+-- INSERT INTO admins (email, password_hash)
+-- VALUES (
+-- 'admin@rawb2c.com',
+-- '$2y$10$TKh8H1.PfQx37YgCzwiKb.KjNyWgaHb9cbcoQgdIVFlYg7B77UdFm'
+-- );
+
+-- UPDATE admins
+-- SET password_hash='$2y$10$dDZ0uBmInldLpghTvxVvXudsC9J4cgUXHKv7rxm5tKiOIni.qLVx6'
+-- WHERE email='admin@rawb2c.com';
+
+
+
+-- INSERT INTO workers(
+-- first_name,
+-- last_name,
+-- email,
+-- phone,
+-- skill_area
+-- )
+-- VALUES(
+-- 'John',
+-- 'Doe',
+-- 'john@example.com',
+-- '08012345678',
+-- 'Web Development'
+-- );
+
+-- INSERT INTO products(
+-- name,
+-- brand,
+-- status
+-- )
+-- VALUES(
+-- 'RAW Product',
+-- 'RAW HUB',
+-- 'Active'
+-- );
+
+
+-- INSERT INTO products(
+-- name,
+-- brand,
+-- status
+-- )
+-- VALUES(
+-- 'RAW Product',
+-- 'RAW HUB',
+-- 'Active'
+-- );
+
+
+-- INSERT INTO reviews(
+-- customer_name,
+-- email,
+-- rating,
+-- review_text,
+-- status
+-- )
+-- VALUES(
+-- 'Michael',
+-- 'michael@example.com',
+-- 5,
+-- 'Great service',
+-- 'Pending'
+-- );

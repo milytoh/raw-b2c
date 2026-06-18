@@ -4,6 +4,29 @@ $page_title = 'Dashboard | RAW B2C LTD';
 include 'includes/header.php';
 include 'includes/sidebar.php';
 
+require '../config/database.php';
+
+// Dashboard Statistics
+$totalWorkers = $pdo->query("SELECT COUNT(*) FROM workers")->fetchColumn();
+
+$totalProducts = $pdo->query("
+    SELECT COUNT(*)
+    FROM products
+    WHERE status='Active'
+")->fetchColumn();
+
+$pendingReviews = $pdo->query("
+    SELECT COUNT(*)
+    FROM reviews
+    WHERE status='Pending'
+")->fetchColumn();
+
+$totalRewards = $pdo->query("
+    SELECT COUNT(*)
+    FROM rewards
+")->fetchColumn();
+?>
+
 ?> -->
 
 
@@ -30,7 +53,7 @@ include 'includes/sidebar.php';
                     </div>
                     <div>
                         <p class="text-sm font-bold text-on-surface-variant uppercase tracking-wider">Total Workers</p>
-                        <h3 class="font-headline-md text-3xl font-bold text-primary">1,245</h3>
+                        <h3 class="font-headline-md text-3xl font-bold text-primary"><?php echo $totalWorkers; ?></h3>
                     </div>
                 </div>
                 
@@ -41,7 +64,7 @@ include 'includes/sidebar.php';
                     </div>
                     <div>
                         <p class="text-sm font-bold text-on-surface-variant uppercase tracking-wider">Active Products</p>
-                        <h3 class="font-headline-md text-3xl font-bold text-primary">86</h3>
+                        <h3 class="font-headline-md text-3xl font-bold text-primary"><?php echo $totalProducts; ?></h3>
                     </div>
                 </div>
                 
@@ -52,7 +75,7 @@ include 'includes/sidebar.php';
                     </div>
                     <div>
                         <p class="text-sm font-bold text-on-surface-variant uppercase tracking-wider">Pending Reviews</p>
-                        <h3 class="font-headline-md text-3xl font-bold text-primary">12</h3>
+                        <h3 class="font-headline-md text-3xl font-bold text-primary"><?php echo $pendingReviews; ?></h3>
                     </div>
                 </div>
                 
@@ -63,7 +86,7 @@ include 'includes/sidebar.php';
                     </div>
                     <div>
                         <p class="text-sm font-bold text-on-surface-variant uppercase tracking-wider">Reward Claims</p>
-                        <h3 class="font-headline-md text-3xl font-bold text-primary">45</h3>
+                        <h3 class="font-headline-md text-3xl font-bold text-primary"><?php echo $totalRewards; ?></h3>
                     </div>
                 </div>
             </div>
@@ -116,9 +139,16 @@ include 'includes/sidebar.php';
                     <h3 class="font-headline-md text-xl font-bold mb-6">Quick Actions</h3>
                     
                     <div class="space-y-4">
-                        <button class="w-full bg-white text-primary px-4 py-3 rounded-xl font-bold text-sm flex items-center gap-3 hover:bg-primary-fixed transition-colors">
-                            <span class="material-symbols-outlined">add_circle</span> Add New Product
-                        </button>
+                                                <a href="add-product.php"
+                        class="w-full bg-white text-primary px-4 py-3 rounded-xl font-bold text-sm flex items-center gap-3 hover:bg-primary-fixed transition-colors">
+
+                            <span class="material-symbols-outlined">
+                                add_circle
+                            </span>
+
+                            Add New Product
+
+                        </a>
                         <button class="w-full bg-primary-container text-white px-4 py-3 rounded-xl font-bold text-sm flex items-center gap-3 border border-on-primary/20 hover:bg-primary-fixed hover:text-primary transition-colors">
                             <span class="material-symbols-outlined">edit_document</span> Draft Blog Post
                         </button>
