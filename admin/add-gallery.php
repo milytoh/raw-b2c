@@ -190,8 +190,6 @@ Community
 <div>
 
 
-<label class="font-bold">
-Image
 <label class="block text-sm font-bold text-primary mb-2">
 Image
 </label>

@@ -25,7 +25,64 @@ $totalRewards = $pdo->query("
     SELECT COUNT(*)
     FROM rewards
 ")->fetchColumn();
-?>
+
+
+$activities = [];
+
+
+/* Products */
+$stmt = $pdo->query("
+    SELECT
+        name AS title,
+        created_at,
+        'product' AS type
+    FROM products
+");
+
+$activities = array_merge(
+    $activities,
+    $stmt->fetchAll(PDO::FETCH_ASSOC)
+);
+
+
+/* Blog Posts */
+$stmt = $pdo->query("
+    SELECT
+        title,
+        created_at,
+        'blog' AS type
+    FROM blog_posts
+");
+
+$activities = array_merge(
+    $activities,
+    $stmt->fetchAll(PDO::FETCH_ASSOC)
+);
+
+
+/* Gallery */
+$stmt = $pdo->query("
+    SELECT
+        title,
+        uploaded_at AS created_at,
+        'gallery' AS type
+    FROM gallery
+");
+
+$activities = array_merge(
+    $activities,
+    $stmt->fetchAll(PDO::FETCH_ASSOC)
+);
+
+
+/* Sort newest first */
+usort($activities, function ($a, $b) {
+    return strtotime($b['created_at']) - strtotime($a['created_at']);
+});
+
+
+/* Only latest 4 */
+$activities = array_slice($activities, 0, 4);
 
 ?> -->
 
@@ -99,38 +156,79 @@ $totalRewards = $pdo->query("
                         <a href="#" class="text-sm font-bold text-primary hover:underline">View All</a>
                     </div>
                     
-                    <div class="space-y-6">
-                        <!-- Activity Item -->
+                   <div class="space-y-6">
+
+                        <?php foreach($activities as $activity): ?>
+
+                        <?php
+
+                        $icon = 'info';
+                        $bgClass = 'bg-primary-fixed';
+                        $textClass = 'text-primary';
+                        $message = '';
+
+                        if($activity['type'] === 'product'){
+
+                            $icon = 'inventory_2';
+                            $message = 'New product added: <strong>'
+                                    . htmlspecialchars($activity['title'])
+                                    . '</strong>';
+
+                        }
+
+                        elseif($activity['type'] === 'blog'){
+
+                            $icon = 'edit_document';
+                            $bgClass = 'bg-secondary-container';
+                            $textClass = 'text-secondary';
+
+                            $message = 'New blog post published: <strong>'
+                                    . htmlspecialchars($activity['title'])
+                                    . '</strong>';
+
+                        }
+
+                        elseif($activity['type'] === 'gallery'){
+
+                            $icon = 'add_photo_alternate';
+                            $bgClass = 'bg-tertiary-container';
+                            $textClass = 'text-tertiary';
+
+                            $message = 'New media uploaded: <strong>'
+                                    . htmlspecialchars($activity['title'])
+                                    . '</strong>';
+
+                        }
+
+                        ?>
+
                         <div class="flex gap-4">
-                            <div class="w-10 h-10 bg-primary-fixed rounded-full flex items-center justify-center shrink-0 mt-1">
-                                <span class="material-symbols-outlined text-primary text-sm">person_add</span>
+
+                            <div class="w-10 h-10 <?= $bgClass ?> rounded-full flex items-center justify-center shrink-0 mt-1">
+
+                                <span class="material-symbols-outlined <?= $textClass ?> text-sm">
+                                    <?= $icon ?>
+                                </span>
+
                             </div>
+
                             <div>
-                                <p class="text-sm text-on-surface"><strong>Sarah Okafor</strong> registered as a new worker (Fashion & Design).</p>
-                                <p class="text-xs text-on-surface-variant mt-1">10 minutes ago</p>
+
+                                <p class="text-sm text-on-surface">
+                                    <?= $message ?>
+                                </p>
+
+                                <p class="text-xs text-on-surface-variant mt-1">
+                                    <?= date('M d, Y • h:i A', strtotime($activity['created_at'])) ?>
+                                </p>
+
                             </div>
+
                         </div>
-                        <!-- Activity Item -->
-                        <div class="flex gap-4">
-                            <div class="w-10 h-10 bg-secondary-container rounded-full flex items-center justify-center shrink-0 mt-1">
-                                <span class="material-symbols-outlined text-secondary text-sm">add_photo_alternate</span>
-                            </div>
-                            <div>
-                                <p class="text-sm text-on-surface">New gallery images uploaded to <strong>Projects</strong> by Admin.</p>
-                                <p class="text-xs text-on-surface-variant mt-1">1 hour ago</p>
-                            </div>
+
+                        <?php endforeach; ?>
+
                         </div>
-                        <!-- Activity Item -->
-                        <div class="flex gap-4">
-                            <div class="w-10 h-10 bg-error-container rounded-full flex items-center justify-center shrink-0 mt-1">
-                                <span class="material-symbols-outlined text-error text-sm">rate_review</span>
-                            </div>
-                            <div>
-                                <p class="text-sm text-on-surface">New review submitted by <strong>John D.</strong> waiting for approval.</p>
-                                <p class="text-xs text-on-surface-variant mt-1">3 hours ago</p>
-                            </div>
-                        </div>
-                    </div>
                 </div>
 
                 <!-- Quick Actions Placeholder -->
@@ -149,12 +247,27 @@ $totalRewards = $pdo->query("
                             Add New Product
 
                         </a>
-                        <button class="w-full bg-primary-container text-white px-4 py-3 rounded-xl font-bold text-sm flex items-center gap-3 border border-on-primary/20 hover:bg-primary-fixed hover:text-primary transition-colors">
-                            <span class="material-symbols-outlined">edit_document</span> Draft Blog Post
-                        </button>
-                        <button class="w-full bg-primary-container text-white px-4 py-3 rounded-xl font-bold text-sm flex items-center gap-3 border border-on-primary/20 hover:bg-primary-fixed hover:text-primary transition-colors">
-                            <span class="material-symbols-outlined">cloud_upload</span> Upload Media
-                        </button>
+                        <a href="add-blog.php"
+                        class="w-full bg-primary-container text-white px-4 py-3 rounded-xl font-bold text-sm flex items-center gap-3 border border-on-primary/20 hover:bg-primary-fixed hover:text-primary transition-colors">
+
+                            <span class="material-symbols-outlined">
+                                edit_document
+                            </span>
+
+                            Draft Blog Post
+
+                        </a>
+
+                        <a href="add-gallery.php"
+                        class="w-full bg-primary-container text-white px-4 py-3 rounded-xl font-bold text-sm flex items-center gap-3 border border-on-primary/20 hover:bg-primary-fixed hover:text-primary transition-colors">
+
+                            <span class="material-symbols-outlined">
+                                cloud_upload
+                            </span>
+
+                            Upload Media
+
+</a>
                     </div>
                 </div>
             </div>

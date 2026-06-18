@@ -1,11 +1,10 @@
 <?php
+
 include 'includes/protect.php';
 require '../config/database.php';
 
+
 $page_title = 'Manage Gallery | Admin | RAW B2C LTD';
-
-
-// pagination
 
 $limit = 6;
 
@@ -19,49 +18,99 @@ if($page < 1){
 $offset = ($page - 1) * $limit;
 
 
-
-// count
-
-$count = $pdo->query("
-SELECT COUNT(*) FROM gallery
-");
-
-
-$totalItems = $count->fetchColumn();
-
-$totalPages = ceil($totalItems/$limit);
+$category = $_GET['category'] ?? 'All';
 
 
 
 
-// fetch
 
-$stmt = $pdo->prepare("
-SELECT *
-FROM gallery
-ORDER BY uploaded_at DESC
-LIMIT :limit OFFSET :offset
-");
+// ALL MEDIA
+
+if($category == "All"){
 
 
-$stmt->bindValue(
-":limit",
-$limit,
-PDO::PARAM_INT
-);
+    $count = $pdo->query("
+        SELECT COUNT(*) FROM gallery
+    ");
 
 
-$stmt->bindValue(
-":offset",
-$offset,
-PDO::PARAM_INT
-);
+    $totalItems = $count->fetchColumn();
 
 
-$stmt->execute();
+
+    $stmt = $pdo->prepare("
+        SELECT *
+        FROM gallery
+        ORDER BY uploaded_at DESC
+        LIMIT $limit OFFSET $offset
+    ");
 
 
-$gallery = $stmt->fetchAll();
+
+
+}
+
+
+
+
+
+// FILTERED CATEGORY
+
+else{
+
+
+    $count = $pdo->prepare("
+        SELECT COUNT(*)
+        FROM gallery
+        WHERE category = ?
+    ");
+
+
+    $count->execute([$category]);
+
+
+    $totalItems = $count->fetchColumn();
+
+
+
+
+
+    $stmt = $pdo->prepare("
+        SELECT *
+        FROM gallery
+        WHERE category = ?
+        ORDER BY uploaded_at DESC
+        LIMIT $limit OFFSET $offset
+    ");
+
+
+
+    $stmt->execute([$category]);
+
+    $gallery = $stmt->fetchAll();
+
+}
+
+
+
+$totalPages = ceil($totalItems / $limit);
+
+
+
+
+
+// ALL QUERY EXECUTE
+
+if($category == "All"){
+
+
+    $stmt->execute();
+
+
+    $gallery = $stmt->fetchAll();
+
+
+}
 
 
 
@@ -95,14 +144,87 @@ include 'includes/sidebar.php';
                     </a>
             </div>
 
-            <!-- Filter Tabs -->
-            <div class="flex gap-4 mb-8 overflow-x-auto pb-2">
-                <button class="px-4 py-2 bg-primary text-white rounded-lg font-bold text-sm whitespace-nowrap">All Media</button>
-                <button class="px-4 py-2 bg-white text-on-surface-variant border border-outline-variant/30 hover:border-primary hover:text-primary rounded-lg font-bold text-sm transition-colors whitespace-nowrap">Projects</button>
-                <button class="px-4 py-2 bg-white text-on-surface-variant border border-outline-variant/30 hover:border-primary hover:text-primary rounded-lg font-bold text-sm transition-colors whitespace-nowrap">Workers</button>
-                <button class="px-4 py-2 bg-white text-on-surface-variant border border-outline-variant/30 hover:border-primary hover:text-primary rounded-lg font-bold text-sm transition-colors whitespace-nowrap">Products</button>
-                <button class="px-4 py-2 bg-white text-on-surface-variant border border-outline-variant/30 hover:border-primary hover:text-primary rounded-lg font-bold text-sm transition-colors whitespace-nowrap">Community</button>
-            </div>
+           <div class="flex gap-4 mb-8 overflow-x-auto pb-2">
+
+
+<a href="gallery.php?category=All"
+
+class="px-4 py-2 rounded-lg font-bold text-sm whitespace-nowrap
+<?= $category=='All'
+?'bg-primary text-white'
+:'bg-white text-on-surface-variant border'
+?>">
+
+All Media
+
+</a>
+
+
+
+
+<a href="gallery.php?category=Projects"
+
+class="px-4 py-2 rounded-lg font-bold text-sm whitespace-nowrap
+<?= $category=='Projects'
+?'bg-primary text-white'
+:'bg-white text-on-surface-variant border'
+?>">
+
+Projects
+
+</a>
+
+
+
+
+
+<a href="gallery.php?category=Workers"
+
+class="px-4 py-2 rounded-lg font-bold text-sm whitespace-nowrap
+<?= $category=='Workers'
+?'bg-primary text-white'
+:'bg-white text-on-surface-variant border'
+?>">
+
+Workers
+
+</a>
+
+
+
+
+
+<a href="gallery.php?category=Products"
+
+class="px-4 py-2 rounded-lg font-bold text-sm whitespace-nowrap
+<?= $category=='Products'
+?'bg-primary text-white'
+:'bg-white text-on-surface-variant border'
+?>">
+
+Products
+
+</a>
+
+
+
+
+
+<a href="gallery.php?category=Community"
+
+class="px-4 py-2 rounded-lg font-bold text-sm whitespace-nowrap
+<?= $category=='Community'
+?'bg-primary text-white'
+:'bg-white text-on-surface-variant border'
+?>">
+
+Community
+
+</a>
+
+
+
+</div>
 
             <!-- Gallery Grid -->
            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
