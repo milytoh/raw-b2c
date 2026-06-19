@@ -72,6 +72,9 @@ ALTER TABLE products
 ADD COLUMN description TEXT AFTER brand,
 ADD COLUMN price DECIMAL(10,2) DEFAULT 0 AFTER description;
 
+ALTER TABLE reviews
+ADD COLUMN product_id INT AFTER id;
+
 -- INSERT INTO admins (email, password_hash)
 -- VALUES (
 -- 'admin@rawb2c.com',
