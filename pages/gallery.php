@@ -152,7 +152,8 @@ $totalPages = ceil($totalItems / $limit);
 <?php foreach($galleryItems as $item): ?>
 
 
-<div class="relative overflow-hidden rounded-3xl shadow-premium group">
+<a href="gallery-details.php?id=<?= $item['id'] ?>"
+    class="relative overflow-hidden rounded-3xl shadow-premium group block">
 
 
     <img
@@ -199,7 +200,7 @@ $totalPages = ceil($totalItems / $limit);
     </div>
 
 
-</div>
+</a>
 
 
 <?php endforeach; ?>

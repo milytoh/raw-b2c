@@ -1,5 +1,6 @@
 <?php
-$page_title = 'Our Ecosystem & Products | RAW B2C LTD';
+$page_title = 'Our Products | RAW B2C LTD';
+
 $base_path = '../';
 $home_link = '../index.php';
 $about_link = 'about.php';
@@ -15,85 +16,246 @@ $footer_products = '#';
 $footer_blog = 'blog.php';
 $footer_contact = 'contact.php';
 
+
 include '../includes/header.php';
 include '../includes/navbar.php';
+
+
+require '../config/database.php';
+
+
+
+$stmt = $pdo->query("
+SELECT *
+FROM products
+WHERE status='Active'
+ORDER BY created_at DESC
+");
+
+
+$products = $stmt->fetchAll();
+
 ?>
 
-<!-- Hero Section -->
+
+
+<!-- Hero -->
 <section class="relative pt-40 pb-32 overflow-hidden">
-    <div class="absolute inset-0 z-0">
-        <div class="absolute inset-0 bg-primary/80 z-10 mix-blend-multiply"></div>
-        <img alt="Hero Background" class="w-full h-full object-cover scale-105" src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&q=80&w=1920">
-    </div>
-    <div class="relative z-10 max-w-container-max mx-auto px-margin-desktop text-center">
-        <h1 class="font-display-lg text-4xl md:text-5xl text-white font-bold mb-6 reveal active">Our Ecosystem & Products</h1>
-        <p class="text-white/80 text-lg max-w-2xl mx-auto reveal active delay-100">
-            Discover the specialized brands under RAW B2C LTD that drive innovation across diverse sectors.
-        </p>
-    </div>
+
+
+<div class="absolute inset-0">
+
+<div class="absolute inset-0 bg-primary/80 z-10 mix-blend-multiply"></div>
+
+
+<img 
+src="https://images.unsplash.com/photo-1542291026-7eec264c27ff"
+class="w-full h-full object-cover scale-105">
+
+
+</div>
+
+
+
+<div class="relative z-10 text-center max-w-container-max mx-auto px-6">
+
+
+<h1 class="text-white text-5xl font-bold mb-5 reveal active">
+
+Our Products
+
+</h1>
+
+
+<p class="text-white/80 text-lg reveal active delay-100">
+
+Discover products from our growing ecosystem.
+
+</p>
+
+
+</div>
+
+
 </section>
 
-<!-- Content Sections -->
+
+
+
+
+<!-- Products -->
+
 <section class="py-section-gap px-margin-desktop max-w-container-max mx-auto">
-    <!-- RAW HUB -->
-    <div class="flex flex-col md:flex-row items-center gap-12 mb-24 reveal">
-        <div class="w-full md:w-1/2 rounded-3xl overflow-hidden shadow-premium">
-            <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=800" alt="RAW HUB Workspace" class="w-full h-[400px] object-cover hover:scale-105 transition-transform duration-700">
-        </div>
-        <div class="w-full md:w-1/2">
-            <span class="bg-primary-fixed/30 text-primary px-3 py-1 rounded-full text-xs font-bold mb-4 inline-block">TECH HUB</span>
-            <h2 class="font-headline-md text-3xl text-primary mb-6">RAW HUB</h2>
-            <p class="text-on-surface-variant font-body-lg mb-6 leading-relaxed">
-                A dynamic environment for collaboration, innovation, and technological advancement in the heart of the business district.
-            </p>
-            <ul class="space-y-3 mb-8">
-                <li class="flex items-center gap-2 text-on-surface-variant"><span class="material-symbols-outlined text-primary">check_circle</span> State-of-the-art co-working spaces</li>
-                <li class="flex items-center gap-2 text-on-surface-variant"><span class="material-symbols-outlined text-primary">check_circle</span> Tech incubators for startups</li>
-                <li class="flex items-center gap-2 text-on-surface-variant"><span class="material-symbols-outlined text-primary">check_circle</span> High-speed networking events</li>
-            </ul>
-            <a href="contact.php" class="bg-primary text-on-primary px-8 py-3 rounded-xl font-bold hover:bg-primary-container transition-all">Inquire Now</a>
-        </div>
-    </div>
 
-    <!-- Mi Boo -->
-    <div class="flex flex-col md:flex-row-reverse items-center gap-12 mb-24 reveal">
-        <div class="w-full md:w-1/2 rounded-3xl overflow-hidden shadow-premium">
-            <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&q=80&w=800" alt="Mi Boo Lifestyle" class="w-full h-[400px] object-cover hover:scale-105 transition-transform duration-700">
-        </div>
-        <div class="w-full md:w-1/2">
-            <span class="bg-secondary-container/30 text-secondary px-3 py-1 rounded-full text-xs font-bold mb-4 inline-block">LIFESTYLE</span>
-            <h2 class="font-headline-md text-3xl text-primary mb-6">Mi Boo</h2>
-            <p class="text-on-surface-variant font-body-lg mb-6 leading-relaxed">
-                Premium lifestyle solutions that blend modern aesthetics with practical daily utility for the sophisticated consumer.
-            </p>
-            <ul class="space-y-3 mb-8">
-                <li class="flex items-center gap-2 text-on-surface-variant"><span class="material-symbols-outlined text-secondary">check_circle</span> Sustainable materials</li>
-                <li class="flex items-center gap-2 text-on-surface-variant"><span class="material-symbols-outlined text-secondary">check_circle</span> Award-winning designs</li>
-                <li class="flex items-center gap-2 text-on-surface-variant"><span class="material-symbols-outlined text-secondary">check_circle</span> Exclusive member benefits</li>
-            </ul>
-            <a href="contact.php" class="bg-secondary text-on-secondary px-8 py-3 rounded-xl font-bold hover:bg-secondary-container hover:text-secondary transition-all">View Catalog</a>
-        </div>
-    </div>
 
-    <!-- Mi Look -->
-    <div class="flex flex-col md:flex-row items-center gap-12 reveal">
-        <div class="w-full md:w-1/2 rounded-3xl overflow-hidden shadow-premium">
-            <img src="https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&q=80&w=800" alt="Mi Look Fashion" class="w-full h-[400px] object-cover hover:scale-105 transition-transform duration-700">
-        </div>
-        <div class="w-full md:w-1/2">
-            <span class="bg-tertiary-fixed/30 text-tertiary px-3 py-1 rounded-full text-xs font-bold mb-4 inline-block">FASHION</span>
-            <h2 class="font-headline-md text-3xl text-primary mb-6">Mi Look</h2>
-            <p class="text-on-surface-variant font-body-lg mb-6 leading-relaxed">
-                Contemporary fashion and creative identity, bridging cultural heritage with futuristic African design concepts.
-            </p>
-            <ul class="space-y-3 mb-8">
-                <li class="flex items-center gap-2 text-on-surface-variant"><span class="material-symbols-outlined text-tertiary">check_circle</span> Bespoke tailoring</li>
-                <li class="flex items-center gap-2 text-on-surface-variant"><span class="material-symbols-outlined text-tertiary">check_circle</span> Seasonal collections</li>
-                <li class="flex items-center gap-2 text-on-surface-variant"><span class="material-symbols-outlined text-tertiary">check_circle</span> Ethical sourcing</li>
-            </ul>
-            <a href="contact.php" class="bg-tertiary text-on-tertiary px-8 py-3 rounded-xl font-bold hover:bg-tertiary-container hover:text-tertiary transition-all">Explore Collection</a>
-        </div>
-    </div>
+<div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+
+
+<?php if(count($products)>0): ?>
+
+
+
+<?php foreach($products as $index=>$product): ?>
+
+
+<div 
+class="reveal active delay-<?= $index*100 ?>
+bg-white rounded-3xl overflow-hidden 
+shadow-premium border border-outline-variant/10
+group hover:-translate-y-3 transition-all duration-500">
+
+
+<!-- image -->
+
+
+<div class="h-64 overflow-hidden">
+
+
+<?php if(!empty($product['image_path'])): ?>
+
+
+<img
+src="../uploads/products/<?= htmlspecialchars($product['image_path']) ?>"
+class="w-full h-full object-cover 
+group-hover:scale-110 transition duration-700">
+
+
+<?php else: ?>
+
+
+<div class="h-full flex items-center justify-center bg-surface-container">
+
+<span class="material-symbols-outlined text-5xl">
+image
+</span>
+
+</div>
+
+
+<?php endif; ?>
+
+
+</div>
+
+
+
+
+
+<div class="p-7">
+
+
+<span class="text-primary text-xs font-bold uppercase tracking-widest">
+
+<?= htmlspecialchars($product['brand']) ?>
+
+</span>
+
+
+
+<h2 class="text-2xl font-bold text-primary mt-3 mb-3">
+
+
+<?= htmlspecialchars($product['name']) ?>
+
+
+</h2>
+
+
+
+<p class="text-on-surface-variant text-sm leading-relaxed mb-5">
+
+
+<?= substr(
+htmlspecialchars($product['description']),
+0,
+140
+) ?>...
+
+
+</p>
+
+
+
+
+
+<div class="flex justify-between items-center">
+
+
+<span class="font-bold text-primary">
+
+
+₦<?= number_format($product['price'],2) ?>
+
+
+</span>
+
+
+
+<a href="product-details.php?id=<?= $product['id'] ?>"
+class="text-primary font-bold flex items-center gap-1">
+
+
+View
+
+<span class="material-symbols-outlined text-sm">
+arrow_forward
+</span>
+
+
+</a>
+
+
+</div>
+
+
+</div>
+
+
+</div>
+
+
+
+<?php endforeach; ?>
+
+
+
+<?php else: ?>
+
+
+<div class="col-span-full text-center py-20">
+
+
+<h2 class="text-2xl font-bold text-primary">
+
+No products available
+
+</h2>
+
+
+<p class="text-on-surface-variant">
+
+Products will appear here once added.
+
+</p>
+
+
+</div>
+
+
+
+<?php endif; ?>
+
+
+
+</div>
+
+
+
 </section>
+
+
+
+
 
 <?php include '../includes/footer.php'; ?>
