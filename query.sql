@@ -75,6 +75,12 @@ ADD COLUMN price DECIMAL(10,2) DEFAULT 0 AFTER description;
 ALTER TABLE reviews
 ADD COLUMN product_id INT AFTER id;
 
+ALTER TABLE workers
+ADD state VARCHAR(100) AFTER phone,
+ADD local_government VARCHAR(100) AFTER state;
+
+
+
 -- INSERT INTO admins (email, password_hash)
 -- VALUES (
 -- 'admin@rawb2c.com',

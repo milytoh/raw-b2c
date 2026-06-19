@@ -448,11 +448,15 @@ class="w-full border my-2 rounded-xl p-3">
 
 <select name="rating" class="w-full border rounded-xl p-3">
 
-<option value="5">★★★★★</option>
-<option value="4">★★★★</option>
-<option value="3">★★★</option>
-<option value="2">★★</option>
-<option value="1">★</option>
+<option value="5">⭐⭐⭐⭐⭐ Excellent</option>
+
+<option value="4">⭐⭐⭐⭐ Very Good</option>
+
+<option value="3">⭐⭐⭐ Average</option>
+
+<option value="2">⭐⭐ Poor</option>
+
+<option value="1">⭐ Bad</option>
 
 </select>
 
