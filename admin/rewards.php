@@ -1,98 +1,383 @@
 <?php
+
 include 'includes/protect.php';
+
+require '../config/database.php';
+
 $page_title = 'Manage Rewards | Admin | RAW B2C LTD';
+
 include 'includes/header.php';
 include 'includes/sidebar.php';
 
+
+
+// get rewards
+
+$stmt = $pdo->query("
+
+SELECT *
+
+FROM rewards
+
+ORDER BY created_at DESC
+
+");
+
+$rewards = $stmt->fetchAll();
+
+
+
+// stats
+
+$totalStmt = $pdo->query("
+SELECT COUNT(*) FROM rewards
+");
+
+$totalRewards = $totalStmt->fetchColumn();
+
+
+
+$pendingStmt = $pdo->query("
+SELECT COUNT(*) FROM rewards
+WHERE status='Pending'
+");
+
+$pendingRewards = $pendingStmt->fetchColumn();
+
+
+
+$completedStmt = $pdo->query("
+SELECT COUNT(*) FROM rewards
+WHERE status='Completed'
+");
+
+$completedRewards = $completedStmt->fetchColumn();
+
+
+
 ?>
 
+
 <div class="flex-1 flex flex-col h-screen overflow-hidden bg-surface">
-    <?php include 'includes/navbar.php'; ?>
 
-    <main class="flex-1 overflow-y-auto p-6 md:p-10">
-        <div class="max-w-7xl mx-auto">
-            
-            <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-10 gap-4">
-                <div>
-                    <h1 class="font-headline-md text-3xl font-bold text-primary mb-2">Customer Rewards</h1>
-                    <p class="text-on-surface-variant">Manually track and process customer reward claims.</p>
-                </div>
-                <button class="bg-primary text-on-primary px-6 py-3 rounded-xl font-bold flex items-center gap-2 hover:bg-primary-container transition-colors shadow-md">
-                    <span class="material-symbols-outlined">add_circle</span> Log New Reward
-                </button>
-            </div>
 
-            <!-- Stats Grid -->
-            <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 mb-10">
-                <div class="bg-white p-6 rounded-[24px] shadow-sm border border-outline-variant/10 text-center">
-                    <p class="text-sm font-bold text-on-surface-variant uppercase tracking-wider mb-2">Total Claims Processed</p>
-                    <h3 class="font-headline-md text-4xl font-bold text-primary">342</h3>
-                </div>
-                <div class="bg-white p-6 rounded-[24px] shadow-sm border border-outline-variant/10 text-center border-l-4 border-l-error">
-                    <p class="text-sm font-bold text-on-surface-variant uppercase tracking-wider mb-2">Pending Claims</p>
-                    <h3 class="font-headline-md text-4xl font-bold text-error">45</h3>
-                </div>
-                <div class="bg-white p-6 rounded-[24px] shadow-sm border border-outline-variant/10 text-center">
-                    <p class="text-sm font-bold text-on-surface-variant uppercase tracking-wider mb-2">Total Value Disbursed</p>
-                    <h3 class="font-headline-md text-4xl font-bold text-primary">₦1.2M</h3>
-                </div>
-            </div>
+<?php include 'includes/navbar.php'; ?>
 
-            <!-- Table Container -->
-            <div class="bg-white rounded-[24px] shadow-premium border border-outline-variant/10 overflow-hidden">
-                <div class="overflow-x-auto">
-                    <table class="w-full text-left border-collapse">
-                        <thead>
-                            <tr class="bg-surface-container-low text-on-surface-variant text-sm border-b border-outline-variant/20">
-                                <th class="py-4 px-6 font-bold">Claim ID</th>
-                                <th class="py-4 px-6 font-bold">Customer Name</th>
-                                <th class="py-4 px-6 font-bold">Reward Type</th>
-                                <th class="py-4 px-6 font-bold">Points/Value</th>
-                                <th class="py-4 px-6 font-bold">Status</th>
-                                <th class="py-4 px-6 font-bold text-right">Actions</th>
-                            </tr>
-                        </thead>
-                        <tbody class="text-sm">
-                            <!-- Placeholder Row 1 -->
-                            <tr class="border-b border-outline-variant/10 hover:bg-surface-container-low/50 transition-colors">
-                                <td class="py-4 px-6 font-mono text-on-surface-variant">#RWD-9021</td>
-                                <td class="py-4 px-6 font-semibold text-primary">Chidi Okafor</td>
-                                <td class="py-4 px-6">Mi Boo Discount Voucher</td>
-                                <td class="py-4 px-6 font-semibold">1,000 pts</td>
-                                <td class="py-4 px-6"><span class="bg-surface-container-high text-on-surface px-2 py-1 rounded text-xs font-bold">Pending</span></td>
-                                <td class="py-4 px-6 text-right space-x-2">
-                                    <button class="bg-primary-fixed text-on-primary-fixed text-xs font-bold px-3 py-1 rounded hover:bg-primary hover:text-white transition-colors">Process</button>
-                                </td>
-                            </tr>
-                            <!-- Placeholder Row 2 -->
-                            <tr class="border-b border-outline-variant/10 hover:bg-surface-container-low/50 transition-colors">
-                                <td class="py-4 px-6 font-mono text-on-surface-variant">#RWD-9020</td>
-                                <td class="py-4 px-6 font-semibold text-primary">Amina Bello</td>
-                                <td class="py-4 px-6">RAW HUB Day Pass</td>
-                                <td class="py-4 px-6 font-semibold">2,500 pts</td>
-                                <td class="py-4 px-6"><span class="bg-surface-container-high text-on-surface px-2 py-1 rounded text-xs font-bold">Pending</span></td>
-                                <td class="py-4 px-6 text-right space-x-2">
-                                    <button class="bg-primary-fixed text-on-primary-fixed text-xs font-bold px-3 py-1 rounded hover:bg-primary hover:text-white transition-colors">Process</button>
-                                </td>
-                            </tr>
-                            <!-- Placeholder Row 3 -->
-                            <tr class="hover:bg-surface-container-low/50 transition-colors">
-                                <td class="py-4 px-6 font-mono text-on-surface-variant">#RWD-9019</td>
-                                <td class="py-4 px-6 font-semibold text-primary">Tunde Bakare</td>
-                                <td class="py-4 px-6">Cashback (₦5,000)</td>
-                                <td class="py-4 px-6 font-semibold">5,000 pts</td>
-                                <td class="py-4 px-6"><span class="bg-secondary-container text-on-secondary-container px-2 py-1 rounded text-xs font-bold">Completed</span></td>
-                                <td class="py-4 px-6 text-right space-x-2">
-                                    <button class="text-primary hover:text-primary-container p-1"><span class="material-symbols-outlined text-sm">visibility</span></button>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
 
-        </div>
-    </main>
+<main class="flex-1 overflow-y-auto p-6 md:p-10">
+
+
+<div class="max-w-7xl mx-auto">
+
+
+
+<?php if(isset($_SESSION['success'])): ?>
+
+<div class="mb-6 bg-green-100 text-green-700 p-4 rounded-xl font-bold">
+
+<?= $_SESSION['success']; ?>
+
 </div>
+
+<?php unset($_SESSION['success']); endif; ?>
+
+
+
+
+
+<?php if(isset($_SESSION['error'])): ?>
+
+<div class="mb-6 bg-red-100 text-red-700 p-4 rounded-xl font-bold">
+
+<?= $_SESSION['error']; ?>
+
+</div>
+
+<?php unset($_SESSION['error']); endif; ?>
+
+
+
+
+
+
+<div class="flex justify-between items-center mb-10">
+
+
+<div>
+
+<h1 class="text-3xl font-bold text-primary">
+Customer Rewards
+</h1>
+
+<p class="text-on-surface-variant">
+Create and manage customer reward codes
+</p>
+
+</div>
+
+
+
+<a href="create-reward.php"
+
+class="bg-primary text-white px-6 py-3 rounded-xl font-bold flex gap-2 items-center">
+
+
+<span class="material-symbols-outlined">
+add
+</span>
+
+Generate Reward
+
+
+</a>
+
+
+</div>
+
+
+
+
+
+
+<div class="grid md:grid-cols-3 gap-6 mb-10">
+
+
+<div class="bg-white rounded-[24px] p-6 shadow">
+
+<p>Total Rewards</p>
+
+<h2 class="text-4xl font-bold text-primary">
+
+<?= $totalRewards ?>
+
+</h2>
+
+</div>
+
+
+
+<div class="bg-white rounded-[24px] p-6 shadow">
+
+
+<p>Pending</p>
+
+<h2 class="text-4xl font-bold text-orange-500">
+
+<?= $pendingRewards ?>
+
+</h2>
+
+</div>
+
+
+
+
+<div class="bg-white rounded-[24px] p-6 shadow">
+
+
+<p>Completed</p>
+
+<h2 class="text-4xl font-bold text-green-600">
+
+<?= $completedRewards ?>
+
+</h2>
+
+</div>
+
+
+
+</div>
+
+
+
+
+
+
+
+
+<div class="bg-white rounded-[24px] shadow overflow-hidden">
+
+
+<div class="overflow-x-auto">
+
+
+<table class="w-full text-left">
+
+
+<thead>
+
+<tr class="bg-gray-50">
+
+
+<th class="p-5">
+Code
+</th>
+
+
+<th class="p-5">
+Customer
+</th>
+
+
+<th class="p-5">
+Reward
+</th>
+
+
+<th class="p-5">
+Value
+</th>
+
+
+<th class="p-5">
+Status
+</th>
+
+
+<th class="p-5">
+Date
+</th>
+
+
+</tr>
+
+
+</thead>
+
+
+
+
+
+
+<tbody>
+
+
+<?php foreach($rewards as $reward): ?>
+
+
+<tr class="border-t">
+
+
+<td class="p-5 font-mono font-bold text-primary">
+
+<?= htmlspecialchars($reward['reward_code']) ?>
+
+</td>
+
+
+
+<td class="p-5">
+
+
+<?= htmlspecialchars($reward['customer_name']) ?>
+
+
+<br>
+
+<span class="text-xs text-gray-500">
+
+<?= htmlspecialchars($reward['customer_phone']) ?>
+
+</span>
+
+
+</td>
+
+
+
+
+
+<td class="p-5">
+
+<?= htmlspecialchars($reward['reward_type']) ?>
+
+</td>
+
+
+
+
+<td class="p-5 font-bold">
+
+<?= htmlspecialchars($reward['points_value']) ?>
+
+</td>
+
+
+
+
+
+<td class="p-5">
+
+
+<?php if($reward['status']=="Completed"): ?>
+
+
+<span class="bg-green-100 text-green-700 px-3 py-1 rounded-full text-xs font-bold">
+
+Completed
+
+</span>
+
+
+<?php else: ?>
+
+
+<span class="bg-orange-100 text-orange-700 px-3 py-1 rounded-full text-xs font-bold">
+
+Pending
+
+</span>
+
+
+<?php endif; ?>
+
+
+</td>
+
+
+
+
+
+<td class="p-5 text-sm">
+
+
+<?= date("d M Y",strtotime($reward['created_at'])) ?>
+
+
+</td>
+
+
+
+</tr>
+
+
+
+<?php endforeach; ?>
+
+
+
+</tbody>
+
+
+</table>
+
+
+</div>
+
+
+</div>
+
+
+
+</div>
+
+
+</main>
+
+
+</div>
+
+
 
 <?php include 'includes/footer.php'; ?>

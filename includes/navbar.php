@@ -15,6 +15,13 @@
             <a class="hover:text-primary transition-colors" href="<?php echo isset($gallery_link) ? $gallery_link : '#gallery'; ?>">Gallery</a>
             <a class="hover:text-primary transition-colors" href="<?php echo isset($blog_link) ? $blog_link : '#blog'; ?>">Blog</a>
             <a class="hover:text-primary transition-colors" href="<?php echo isset($reviews_link) ? $reviews_link : '#reviews'; ?>">Reviews</a>
+                <a 
+                class="hover:text-primary transition-colors"
+                href="<?php echo isset($base_path) ? $base_path.'pages/claim-reward.php' : 'pages/claim-reward.php'; ?>">
+
+               Claim  Rewards
+
+                </a>
         </div>
 
         <!-- CTA and Mobile Menu Button -->
@@ -37,6 +44,13 @@
             <a class="block py-2 hover:text-primary transition-colors" href="<?php echo isset($gallery_link) ? $gallery_link : '#gallery'; ?>">Gallery</a>
             <a class="block py-2 hover:text-primary transition-colors" href="<?php echo isset($blog_link) ? $blog_link : '#blog'; ?>">Blog</a>
             <a class="block py-2 hover:text-primary transition-colors" href="<?php echo isset($reviews_link) ? $reviews_link : '#reviews'; ?>">Reviews</a>
+                <a 
+        class="block py-2 hover:text-primary transition-colors"
+        href="<?php echo isset($base_path) ? $base_path.'pages/claim-reward.php' : 'pages/claim-reward.php'; ?>">
+
+      Claim  Rewards
+
+        </a>
         </div>
     </div>
 </nav>

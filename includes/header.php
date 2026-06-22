@@ -15,6 +15,7 @@
     <!-- Tailwind Config -->
     <script id="tailwind-config">
         tailwind.config = {
+            
             darkMode: "class",
             theme: {
                 extend: {

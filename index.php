@@ -1,6 +1,8 @@
 <?php
 $page_title = 'RAW B2C LTD | Building Solutions, Empowering People';
+
 $base_path = '';
+
 $home_link = '#';
 $about_link = 'pages/about.php';
 $products_link = 'pages/product.php';
@@ -15,6 +17,29 @@ $footer_products = 'pages/product.php';
 $footer_blog = 'pages/blog.php';
 $footer_contact = 'pages/contact.php';
 
+
+// DATABASE FIRST
+require 'config/database.php';
+
+
+// FETCH BLOGS
+$blogs = $pdo->query("
+SELECT *
+FROM blog_posts
+ORDER BY created_at DESC
+LIMIT 3
+")->fetchAll();
+
+// FETCH REVIEWS (ONLY APPROVED)
+$reviews = $pdo->query("
+    SELECT *
+    FROM reviews
+    WHERE status='Approved'
+    ORDER BY created_at DESC
+    LIMIT 3
+")->fetchAll();
+
+// LOAD UI
 include 'includes/header.php';
 include 'includes/navbar.php';
 ?>
@@ -236,115 +261,233 @@ include 'includes/navbar.php';
 </section>
 <!-- Updates / Blog Section -->
 <section class="py-section-gap bg-surface-container-low px-margin-desktop" id="blog">
-<div class="max-w-container-max mx-auto">
-<div class="flex justify-between items-end mb-16 reveal active">
-<div>
-<h2 class="font-headline-md text-headline-md text-primary mb-4">Latest Updates</h2>
-<p class="text-on-surface-variant">Insights and news from our corporate ecosystem.</p>
-</div>
-</div>
-<div class="grid md:grid-cols-3 gap-8">
-<div class="reveal bg-white rounded-3xl overflow-hidden group shadow-premium transition-all duration-300 border border-outline-variant/10 active">
-<div class="h-56 overflow-hidden">
-<img alt="Blog 1" class="w-full h-full object-cover group-hover:scale-110 transition-all duration-500" data-alt="A professional business leader giving a presentation in a modern auditorium. The screen behind them shows growth charts and the brand's green logo. The audience is blurred in the foreground, creating a focus on the leader's confident gesture. High-key lighting and a professional, aspirational atmosphere." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB7BZ_8MN5ioyXj1xaRd_GjfsqcoIRua68ebv5xazWLjKcCz6yxUzav1j9_9-Lk0L_kTDr61Ef1tcznEGobIxxzaZ3VSkXg0m1mB9RB-qBOTLaJ0cQDMcJ0aJ2pj4fKG28RDROpWyqKvr_ZGr7qUYoFxk0K-nwGt9bWQ2r4ZABBRPM7RbMYOtZi8fJck9waGbyK9jlVoQOQumWUkY59im6mAMEjHMuCswdYyFQ2LU1xO1E7bbfmZUofd59nsb7eui4wzdP4LHo2ECo">
-</div>
-<div class="p-8">
-<span class="text-primary font-bold text-xs uppercase tracking-widest">Business</span>
-<h4 class="font-bold text-xl my-4 text-primary group-hover:text-secondary transition-colors">Future of B2C Markets in 2024</h4>
-<p class="text-on-surface-variant text-sm mb-6">Exploring the shift toward personalized consumer experiences and community-driven commerce models.</p>
-<a class="text-primary font-bold inline-flex items-center gap-1 group/link" href="#">
-                            Read Article <span class="material-symbols-outlined text-sm group-hover/link:translate-x-1 transition-transform">arrow_forward</span>
-</a>
-</div>
-</div>
-<div class="reveal bg-white rounded-3xl overflow-hidden group shadow-premium transition-all duration-300 border border-outline-variant/10 delay-100 active">
-<div class="h-56 overflow-hidden">
-<img alt="Blog 2" class="w-full h-full object-cover group-hover:scale-110 transition-all duration-500" data-alt="Lush green plant seedlings growing in structured rows in a modern, sustainable indoor facility. Soft diffused sunlight illuminates the vibrant green leaves. The setting is clean, orderly, and futuristic, symbolizing organic growth within a technological framework. The aesthetic is serene and high-end." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBawQMfrj677vVueRaQjvhC9RHJyALTH-RnSk_jWD29Od1XjbHmKhZGhDfuzqPZiyF6G9iymWJFaj_MekxYlu_fGeq6AXu-kZysM5blR-uExNCqS-u45CtP2PBrZTS3XCzHT9oKzPbM3FFZUbRhfd9FG_DGCCfOsGoNhrfyukxpUgWxGq7RhGjtH3fIh8MxucujESPqT3a2OcXocRPCBtK97vhBjZMfErcMa_1QdbUkbojGWmmsvz_8h_b4Mqgh0QNdIPT0Lc7OtHM">
-</div>
-<div class="p-8">
-<span class="text-primary font-bold text-xs uppercase tracking-widest">Sustainability</span>
-<h4 class="font-bold text-xl my-4 text-primary group-hover:text-secondary transition-colors">Building Sustainable Ecosystems</h4>
-<p class="text-on-surface-variant text-sm mb-6">How RAW HUB is pioneering sustainable workspace initiatives to reduce carbon footprint and increase productivity.</p>
-<a class="text-primary font-bold inline-flex items-center gap-1 group/link" href="#">
-                            Read Article <span class="material-symbols-outlined text-sm group-hover/link:translate-x-1 transition-transform">arrow_forward</span>
-</a>
-</div>
-</div>
-<div class="reveal bg-white rounded-3xl overflow-hidden group shadow-premium transition-all duration-300 border border-outline-variant/10 delay-200 active">
-<div class="h-56 overflow-hidden">
-<img alt="Blog 3" class="w-full h-full object-cover group-hover:scale-110 transition-all duration-500" data-alt="A diverse group of young professionals smiling and laughing together in a brightly lit common area of a tech hub. They are wearing modern, smart-casual attire. The background is a mix of wood textures and green wall installations. The mood is energetic, diverse, and inclusive, capturing a moment of genuine community connection." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB-YnWNHfd77nxsBQVO30VG7syYcfZZBsCeVo41oCapUfv3gMiKYzPBCCP3hTZ0EAeiz0If_K7KgIHlfknEnwiNTcK45d4h_BpDmkYuj1AUbQuRinfGGc2fsZgRJNAYW-nfG2NyKMUjlERW2lmKVVXBjWIz0UdA_sEUml2Oz8F0FAJqp4gEhS2aTXdqLRq7AjLWXOLcCoGeT7gt947LyULJt0ewJEk7KAiW54Z-j2yZJ5m0uk5zsx153PN9sD5tLMZHg_re4lniSUQ">
-</div>
-<div class="p-8">
-<span class="text-primary font-bold text-xs uppercase tracking-widest">Community</span>
-<h4 class="font-bold text-xl my-4 text-primary group-hover:text-secondary transition-colors">Community Spotlight: Q3 Impact</h4>
-<p class="text-on-surface-variant text-sm mb-6">A deep dive into our latest community development projects and the lives they have touched across the region.</p>
-<a class="text-primary font-bold inline-flex items-center gap-1 group/link" href="#">
-                            Read Article <span class="material-symbols-outlined text-sm group-hover/link:translate-x-1 transition-transform">arrow_forward</span>
-</a>
-</div>
-</div>
-</div>
-</div>
+        <div class="max-w-container-max mx-auto">
+        <div class="flex justify-between items-end mb-16 reveal active">
+        <div>
+        <h2 class="font-headline-md text-headline-md text-primary mb-4">Latest Updates</h2>
+        <p class="text-on-surface-variant">Insights and news from our corporate ecosystem.</p>
+        </div>
+        </div>
+       <div class="grid md:grid-cols-3 gap-8">
+
+            <?php foreach($blogs as $blog): ?>
+
+            <div class="reveal bg-white rounded-3xl overflow-hidden group shadow-premium transition-all duration-300 border border-outline-variant/10">
+
+
+        <div class="h-56 overflow-hidden">
+
+        <img 
+       src="uploads/blog/<?= htmlspecialchars($blog['image_path']) ?>"
+        class="w-full h-full object-cover group-hover:scale-110 transition-all duration-500"
+        alt="<?= htmlspecialchars($blog['title']) ?>"
+        >
+
+        </div>
+
+
+        <div class="p-8">
+
+        <span class="text-primary font-bold text-xs uppercase tracking-widest">
+
+        <?= htmlspecialchars($blog['category']) ?>
+
+        </span>
+
+
+
+        <h4 class="font-bold text-xl my-4 text-primary group-hover:text-secondary transition-colors">
+
+        <?= htmlspecialchars($blog['title']) ?>
+
+        </h4>
+
+
+
+
+        <p class="text-on-surface-variant text-sm mb-6">
+
+        <?= htmlspecialchars(substr($blog['content'],0,120)) ?>...
+
+        </p>
+
+
+
+
+                <a 
+        href="pages/blog-details.php?id=<?= $blog['id'] ?>"
+        class="text-primary font-bold inline-flex items-center gap-1 group/link">
+
+        Read Article
+
+        <span class="material-symbols-outlined text-sm group-hover/link:translate-x-1 transition-transform">
+        arrow_forward
+        </span>
+
+        </a>
+
+
+        </div>
+
+
+        </div>
+
+
+        <?php endforeach; ?>
+
+        </div>
+                 
+        
 </section>
+
+
+<!-- Reviews Section -->
 <!-- Reviews Section -->
 <section class="py-section-gap px-margin-desktop max-w-container-max mx-auto" id="reviews">
-<div class="text-center mb-16 reveal active">
-<h2 class="font-headline-md text-headline-md text-primary mb-4">Client Feedback</h2>
-<p class="text-on-surface-variant">What our partners and customers say about us.</p>
-</div>
-<div class="grid md:grid-cols-3 gap-8">
-<div class="reveal glass-card p-10 rounded-[32px] shadow-premium active">
-<div class="flex gap-1 text-secondary mb-6">
-<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
-<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
-<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
-<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
-<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
-</div>
-<p class="italic text-on-surface-variant mb-8 text-lg">"The level of professionalism and the direct impact on our operations since partnering with RAW B2C LTD has been transformative."</p>
-<div class="flex items-center gap-4">
-<div class="w-12 h-12 rounded-full bg-primary-fixed flex items-center justify-center font-bold text-primary">JD</div>
-<div>
-<h5 class="font-bold text-primary">John Doe</h5>
-<p class="text-xs text-on-surface-variant">CEO, Tech Ventures</p>
-</div>
-</div>
-</div>
-<div class="reveal glass-card p-10 rounded-[32px] shadow-premium delay-100 active">
-<div class="flex gap-1 text-secondary mb-6">
-<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
-<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
-<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
-<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
-<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
-</div>
-<p class="italic text-on-surface-variant mb-8 text-lg">"Mi Boo products have redefined what luxury means to us—practical, sustainable, and undeniably elegant."</p>
-<div class="flex items-center gap-4">
-<div class="w-12 h-12 rounded-full bg-secondary-container flex items-center justify-center font-bold text-secondary">SA</div>
-<div>
-<h5 class="font-bold text-primary">Sarah Aminu</h5>
-<p class="text-xs text-on-surface-variant">Lifestyle Consultant</p>
-</div>
-</div>
-</div>
-<div class="reveal glass-card p-10 rounded-[32px] shadow-premium delay-200 active">
-<div class="flex gap-1 text-secondary mb-6">
-<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
-<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
-<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
-<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
-<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
-</div>
-<p class="italic text-on-surface-variant mb-8 text-lg">"Their commitment to community growth is not just a slogan; we've seen the results in our local neighborhoods firsthand."</p>
-<div class="flex items-center gap-4">
-<div class="w-12 h-12 rounded-full bg-tertiary-fixed flex items-center justify-center font-bold text-tertiary">MK</div>
-<div>
-<h5 class="font-bold text-primary">Moussa Kone</h5>
-<p class="text-xs text-on-surface-variant">Community Director</p>
-</div>
-</div>
-</div>
-</div>
+
+        <div class="text-center mb-16 reveal active">
+
+        <h2 class="font-headline-md text-headline-md text-primary mb-4">
+        Client Feedback
+        </h2>
+
+        <p class="text-on-surface-variant">
+        What our partners and customers say about us.
+        </p>
+
+        </div>
+
+
+
+        <div class="grid md:grid-cols-3 gap-8">
+
+
+        <?php if(count($reviews) > 0): ?>
+
+
+        <?php foreach($reviews as $review): ?>
+
+
+        <div class="reveal glass-card p-10 rounded-[32px] shadow-premium active">
+
+
+        <!-- Stars -->
+
+        <div class="flex gap-1 text-secondary mb-6">
+
+
+        <?php for($i=1; $i<=5; $i++): ?>
+
+
+        <span 
+        class="material-symbols-outlined"
+        style="font-variation-settings:'FILL' 1;"
+        >
+
+        <?= $i <= $review['rating'] ? 'star' : 'star_border' ?>
+
+        </span>
+
+
+        <?php endfor; ?>
+
+
+        </div>
+
+
+
+
+        <!-- Review -->
+
+        <p class="italic text-on-surface-variant mb-8 text-lg">
+
+        "
+        <?= htmlspecialchars($review['review_text']) ?>
+        "
+
+        </p>
+
+
+
+
+        <!-- User -->
+
+        <div class="flex items-center gap-4">
+
+
+        <div 
+        class="w-12 h-12 rounded-full bg-primary-fixed flex items-center justify-center font-bold text-primary"
+        >
+
+        <?= strtoupper(substr($review['customer_name'],0,2)) ?>
+
+        </div>
+
+
+
+        <div>
+
+        <h5 class="font-bold text-primary">
+
+        <?= htmlspecialchars($review['customer_name']) ?>
+
+        </h5>
+
+
+        <p class="text-xs text-on-surface-variant">
+
+        Customer
+
+        </p>
+
+
+        </div>
+
+
+        </div>
+
+
+
+        </div>
+
+
+        <?php endforeach; ?>
+
+
+        <?php else: ?>
+
+
+        <div class="md:col-span-3 text-center bg-white rounded-3xl p-10 shadow">
+
+        <span class="material-symbols-outlined text-primary text-5xl">
+        rate_review
+        </span>
+
+
+        <h3 class="text-xl font-bold text-primary mt-4">
+
+        No Reviews Yet
+
+        </h3>
+
+
+        <p class="text-on-surface-variant mt-2">
+
+        Be the first customer to leave a review.
+
+        </p>
+
+
+        </div>
+
+
+
+        <?php endif; ?>
+
+
+
+        </div>
+
 </section>
 <?php include 'includes/footer.php'; ?>
 <script>

@@ -84,6 +84,11 @@ UPDATE workers
 SET cv_file_path = CONCAT('uploads/cv/', cv_file_path)
 WHERE cv_file_path NOT LIKE 'uploads/cv/%';
 
+ALTER TABLE rewards
+ADD reward_code VARCHAR(50) UNIQUE AFTER id,
+ADD customer_phone VARCHAR(50) AFTER customer_name,
+ADD claimed_at TIMESTAMP NULL AFTER created_at;
+
 
 -- INSERT INTO admins (email, password_hash)
 -- VALUES (
