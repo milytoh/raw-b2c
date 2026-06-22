@@ -80,6 +80,10 @@ ADD state VARCHAR(100) AFTER phone,
 ADD local_government VARCHAR(100) AFTER state;
 
 
+UPDATE workers
+SET cv_file_path = CONCAT('uploads/cv/', cv_file_path)
+WHERE cv_file_path NOT LIKE 'uploads/cv/%';
+
 
 -- INSERT INTO admins (email, password_hash)
 -- VALUES (
@@ -93,56 +97,3 @@ ADD local_government VARCHAR(100) AFTER state;
 
 
 
--- INSERT INTO workers(
--- first_name,
--- last_name,
--- email,
--- phone,
--- skill_area
--- )
--- VALUES(
--- 'John',
--- 'Doe',
--- 'john@example.com',
--- '08012345678',
--- 'Web Development'
--- );
-
--- INSERT INTO products(
--- name,
--- brand,
--- status
--- )
--- VALUES(
--- 'RAW Product',
--- 'RAW HUB',
--- 'Active'
--- );
-
-
--- INSERT INTO products(
--- name,
--- brand,
--- status
--- )
--- VALUES(
--- 'RAW Product',
--- 'RAW HUB',
--- 'Active'
--- );
-
-
--- INSERT INTO reviews(
--- customer_name,
--- email,
--- rating,
--- review_text,
--- status
--- )
--- VALUES(
--- 'Michael',
--- 'michael@example.com',
--- 5,
--- 'Great service',
--- 'Pending'
--- );
