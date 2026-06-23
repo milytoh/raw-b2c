@@ -9,20 +9,7 @@
                 <p class="text-on-primary/80 text-sm leading-relaxed">
                     Building solutions and empowering people across the African market through innovative business frameworks.
                 </p>
-                <div class="flex gap-4 mt-4">
-                    <a href="<?php echo isset($social_facebook) ? $social_facebook : '#'; ?>" class="hover:text-primary-fixed transition-colors">
-                        <span class="material-symbols-outlined">facebook</span>
-                    </a>
-                    <a href="<?php echo isset($social_twitter) ? $social_twitter : '#'; ?>" class="hover:text-primary-fixed transition-colors">
-                        <span class="material-symbols-outlined">x</span>
-                    </a>
-                    <a href="<?php echo isset($social_linkedin) ? $social_linkedin : '#'; ?>" class="hover:text-primary-fixed transition-colors">
-                        <span class="material-symbols-outlined">linkedin</span>
-                    </a>
-                    <a href="<?php echo isset($social_instagram) ? $social_instagram : '#'; ?>" class="hover:text-primary-fixed transition-colors">
-                        <span class="material-symbols-outlined">instagram</span>
-                    </a>
-                </div>
+               
             </div>
 
             <!-- Quick Links Column -->

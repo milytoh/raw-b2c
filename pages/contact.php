@@ -397,21 +397,7 @@ include '../includes/navbar.php';
 </section>
 </main>
 <!-- Footer -->
-<footer class="w-full py-section-gap px-margin-desktop flex flex-col md:flex-row justify-between items-center max-w-container-max mx-auto bg-surface-container-highest">
-<div class="flex flex-col items-center md:items-start mb-8 md:mb-0">
-<div class="font-headline-md text-headline-md text-primary font-bold mb-2">RAW B2C LTD</div>
-<p class="text-on-surface-variant text-sm">Empowering the African market through reliable B2C solutions.</p>
-</div>
-<div class="flex flex-wrap justify-center gap-8 mb-8 md:mb-0">
-<a class="text-on-surface-variant hover:text-primary transition-colors" href="#">Privacy Policy</a>
-<a class="text-on-surface-variant hover:text-primary transition-colors" href="#">Terms of Service</a>
-<a class="text-on-surface-variant hover:text-primary transition-colors" href="#">Contact Us</a>
-<a class="text-on-surface-variant hover:text-primary transition-colors" href="#">WhatsApp Support</a>
-</div>
-<div class="text-on-surface-variant text-sm text-center md:text-right">
-            © 2024 RAW B2C LTD. All rights reserved.
-        </div>
-</footer>
+<?php include '../includes/footer.php'; ?>
 <script>
         // Scroll Reveal Animation
         const reveals = document.querySelectorAll('.reveal');

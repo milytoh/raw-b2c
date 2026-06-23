@@ -1,11 +1,23 @@
+<?php
+$logo_src = 'assets/images/raw-b2c-logo.png';
+?>
+
+
 <!-- Navigation Bar -->
-<nav class="fixed top-0 left-0 w-full z-50 bg-surface/90 backdrop-blur-md shadow-sm transition-all duration-300" id="top-nav">
-    <div class="max-w-container-max mx-auto px-margin-desktop py-4 flex justify-between items-center">
+<nav class="fixed top-0 left-0 w-full z-50 bg-surface/90 backdrop-blur-md shadow-sm transition-all duration-300 mb-10" id="top-nav">
+    <div class="max-w-container-max px-4 mx-auto sm:px-margin-desktop sm:py-4 flex justify-between items-center">
         <!-- Logo Section -->
-        <div class="flex items-center gap-4">
-            <img alt="RAW B2C LTD Logo" class="h-10 w-auto" src="<?php echo isset($logo_src) ? $logo_src : ''; ?>">
-            <span class="font-headline-md text-headline-md text-primary font-bold hidden sm:block">RAW B2C LTD</span>
-        </div>
+        <a href="/raw-b2c/index.php" class="flex items-center gap-4">
+    <img
+        alt="RAW B2C LTD Logo"
+        class="h-20 w-20"
+        src="/raw-b2c/assets/images/raw-b2c-logo.png"
+    >
+
+    <span class="font-headline-md text-headline-md text-primary font-bold hidden sm:block">
+        RAW B2C LTD
+    </span>
+</a>
 
         <!-- Desktop Navigation Links -->
         <div class="hidden md:flex items-center gap-8 font-body-md text-body-md text-on-surface-variant">
