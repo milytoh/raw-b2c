@@ -22,57 +22,284 @@ include '../includes/navbar.php';
 <!-- Hero Section -->
 <section class="relative pt-40 pb-32 overflow-hidden">
     <div class="absolute inset-0 z-0">
-        <div class="absolute inset-0 bg-primary/80 z-10 mix-blend-multiply"></div>
-        <img alt="Hero Background" class="w-full h-full object-cover scale-105" src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=1920">
+        <div class="absolute inset-0 bg-primary/80 z-10"></div>
+
+        <img
+            src="https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?auto=format&fit=crop&w=1920&q=80"
+            alt="RAW B2C LTD"
+            class="w-full h-full object-cover">
+
     </div>
+
     <div class="relative z-10 max-w-container-max mx-auto px-margin-desktop text-center">
-        <h1 class="font-display-lg text-4xl md:text-5xl text-white font-bold mb-6 reveal active">About RAW B2C LTD</h1>
-        <p class="text-white/80 text-lg max-w-2xl mx-auto reveal active delay-100">
-            Pioneering aspirational stability and empowering communities across the African corporate landscape.
+
+        <span class="inline-block px-5 py-2 bg-white/20 backdrop-blur-md rounded-full text-white font-bold mb-6">
+            Building Solutions • Empowering People
+        </span>
+
+        <h1 class="font-display-lg text-5xl md:text-6xl text-white font-bold mb-6">
+            About RAW B2C LTD
+        </h1>
+
+        <p class="text-white/90 text-lg max-w-3xl mx-auto">
+            A Nigerian innovation company building practical businesses,
+            digital solutions, and community-driven platforms that solve
+            everyday problems across Africa.
         </p>
+
     </div>
 </section>
 
-<!-- Content Sections -->
+
+
+<!-- Company Story -->
 <section class="py-section-gap px-margin-desktop max-w-container-max mx-auto">
-    <div class="grid md:grid-cols-2 gap-12 items-center mb-24">
-        <div class="reveal">
-            <h2 class="font-headline-md text-3xl text-primary mb-6">Our Vision</h2>
-            <p class="text-on-surface-variant font-body-lg mb-6 leading-relaxed">
-                RAW B2C LTD is a pioneering force in the African corporate landscape. We bridge the gap between high-technology reliability and organic community growth. Our philosophy is rooted in "Aspirational Stability"—ensuring that every solution we build today serves as a foundation for a prosperous tomorrow.
+
+    <div class="grid md:grid-cols-2 gap-gutter items-center">
+
+        <div>
+
+            <span class="text-secondary font-bold uppercase tracking-widest text-sm">
+                Our Story
+            </span>
+
+            <h2 class="font-headline-md text-headline-md text-primary mt-4 mb-6">
+                Building Businesses That Solve Real Problems
+            </h2>
+
+            <p class="text-on-surface-variant text-lg leading-relaxed mb-6">
+                RAW B2C LTD was founded by
+                <strong>Mba Prince Chinyeaka</strong>
+                with a vision to create businesses that directly improve
+                everyday life.
             </p>
-            <p class="text-on-surface-variant font-body-lg mb-6 leading-relaxed">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam in dui mauris. Vivamus hendrerit arcu sed erat molestie vehicula. Sed auctor neque eu tellus rhoncus ut eleifend nibh porttitor. Ut in nulla enim.
+
+            <p class="text-on-surface-variant text-lg leading-relaxed mb-6">
+                Rather than building companies around trends,
+                RAW B2C focuses on solving real problems faced by individuals,
+                families, students, professionals, and communities.
             </p>
+
+            <p class="text-on-surface-variant text-lg leading-relaxed">
+                Today, RAW B2C LTD operates an ecosystem of brands spanning
+                technology, lifestyle, beauty, food, logistics, and household
+                services, all working together under one mission:
+                making life easier, smarter, and more convenient.
+            </p>
+
         </div>
-        <div class="reveal delay-100 rounded-3xl overflow-hidden shadow-premium">
-            <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&q=80&w=800" alt="Team Collaboration" class="w-full h-[400px] object-cover">
+
+        <div class="rounded-3xl overflow-hidden shadow-premium">
+            <img
+                src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=1000&q=80"
+                alt="RAW B2C Team"
+                class="w-full h-[500px] object-cover">
         </div>
+
     </div>
 
-    <div class="grid md:grid-cols-3 gap-8">
-        <div class="p-8 bg-white rounded-3xl shadow-premium reveal border border-outline-variant/10">
-            <div class="w-14 h-14 bg-primary-fixed rounded-2xl flex items-center justify-center mb-6">
-                <span class="material-symbols-outlined text-primary text-3xl">verified_user</span>
+</section>
+
+
+
+<!-- Mission Vision -->
+<section class="py-section-gap bg-surface-container">
+
+    <div class="max-w-container-max mx-auto px-margin-desktop">
+
+        <div class="grid md:grid-cols-2 gap-gutter">
+
+            <div class="bg-white rounded-3xl p-10 shadow-premium">
+
+                <span class="material-symbols-outlined text-primary text-5xl mb-4">
+                    visibility
+                </span>
+
+                <h3 class="text-3xl font-bold text-primary mb-4">
+                    Our Vision
+                </h3>
+
+                <p class="text-on-surface-variant leading-relaxed">
+                    To become one of Africa's most trusted business ecosystems,
+                    creating innovative products and services that improve
+                    everyday living while empowering people economically.
+                </p>
+
             </div>
-            <h3 class="font-bold text-xl mb-4 text-primary">Trust First</h3>
-            <p class="text-on-surface-variant leading-relaxed">Building reliable systems for sustainable growth. We prioritize integrity and transparency in all our operations.</p>
-        </div>
-        <div class="p-8 bg-white rounded-3xl shadow-premium reveal delay-100 border border-outline-variant/10">
-            <div class="w-14 h-14 bg-secondary-container rounded-2xl flex items-center justify-center mb-6">
-                <span class="material-symbols-outlined text-secondary text-3xl">groups</span>
+
+            <div class="bg-white rounded-3xl p-10 shadow-premium">
+
+                <span class="material-symbols-outlined text-primary text-5xl mb-4">
+                    rocket_launch
+                </span>
+
+                <h3 class="text-3xl font-bold text-primary mb-4">
+                    Our Mission
+                </h3>
+
+                <p class="text-on-surface-variant leading-relaxed">
+                    To build practical solutions that solve real-world problems,
+                    create opportunities for individuals, and connect people
+                    with products and services that make life better.
+                </p>
+
             </div>
-            <h3 class="font-bold text-xl mb-4 text-primary">Community</h3>
-            <p class="text-on-surface-variant leading-relaxed">Empowering individuals through shared value. We believe in lifting others as we climb towards success.</p>
+
         </div>
-        <div class="p-8 bg-white rounded-3xl shadow-premium reveal delay-200 border border-outline-variant/10">
-            <div class="w-14 h-14 bg-tertiary-fixed rounded-2xl flex items-center justify-center mb-6">
-                <span class="material-symbols-outlined text-tertiary text-3xl">lightbulb</span>
-            </div>
-            <h3 class="font-bold text-xl mb-4 text-primary">Innovation</h3>
-            <p class="text-on-surface-variant leading-relaxed">Pioneering new solutions for the African market. We embrace technology to solve complex challenges.</p>
-        </div>
+
     </div>
+
+</section>
+
+
+
+<!-- Core Values -->
+<section class="py-section-gap px-margin-desktop max-w-container-max mx-auto">
+
+    <div class="text-center mb-16">
+
+        <h2 class="font-headline-md text-headline-md text-primary mb-4">
+            Our Core Values
+        </h2>
+
+        <p class="text-on-surface-variant">
+            The principles guiding every brand and decision within RAW B2C LTD.
+        </p>
+
+    </div>
+
+    <div class="grid md:grid-cols-4 gap-8">
+
+        <div class="bg-white p-8 rounded-3xl shadow-premium text-center">
+            <span class="material-symbols-outlined text-primary text-5xl mb-4">
+                verified
+            </span>
+            <h4 class="font-bold text-primary mb-3">Integrity</h4>
+            <p class="text-sm text-on-surface-variant">
+                We build trust through honesty, accountability, and transparency.
+            </p>
+        </div>
+
+        <div class="bg-white p-8 rounded-3xl shadow-premium text-center">
+            <span class="material-symbols-outlined text-primary text-5xl mb-4">
+                lightbulb
+            </span>
+            <h4 class="font-bold text-primary mb-3">Innovation</h4>
+            <p class="text-sm text-on-surface-variant">
+                Creating smarter solutions to everyday challenges.
+            </p>
+        </div>
+
+        <div class="bg-white p-8 rounded-3xl shadow-premium text-center">
+            <span class="material-symbols-outlined text-primary text-5xl mb-4">
+                groups
+            </span>
+            <h4 class="font-bold text-primary mb-3">Community</h4>
+            <p class="text-sm text-on-surface-variant">
+                Building businesses that positively impact people and society.
+            </p>
+        </div>
+
+        <div class="bg-white p-8 rounded-3xl shadow-premium text-center">
+            <span class="material-symbols-outlined text-primary text-5xl mb-4">
+                handshake
+            </span>
+            <h4 class="font-bold text-primary mb-3">Reliability</h4>
+            <p class="text-sm text-on-surface-variant">
+                Delivering consistent quality and dependable experiences.
+            </p>
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- Ecosystem Section -->
+<section class="py-section-gap bg-surface-container">
+
+    <div class="max-w-container-max mx-auto px-margin-desktop">
+
+        <div class="text-center mb-16">
+
+            <h2 class="font-headline-md text-headline-md text-primary mb-4">
+                The RAW B2C Ecosystem
+            </h2>
+
+            <p class="text-on-surface-variant max-w-3xl mx-auto">
+                A growing network of brands focused on solving everyday
+                challenges through technology, lifestyle services,
+                beauty, food, and community-driven innovation.
+            </p>
+
+        </div>
+
+        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+
+            <div class="bg-white p-8 rounded-3xl shadow-premium">
+                <h4 class="font-bold text-primary text-xl mb-3">RAW HUB</h4>
+                <p class="text-sm text-on-surface-variant">
+                    Household services, errands, logistics, repairs,
+                    and trusted workmen.
+                </p>
+            </div>
+
+            <div class="bg-white p-8 rounded-3xl shadow-premium">
+                <h4 class="font-bold text-primary text-xl mb-3">Mi Boo's Kitchen</h4>
+                <p class="text-sm text-on-surface-variant">
+                    Daily fruit delivery and healthy lifestyle solutions.
+                </p>
+            </div>
+
+            <div class="bg-white p-8 rounded-3xl shadow-premium">
+                <h4 class="font-bold text-primary text-xl mb-3">Mi Look</h4>
+                <p class="text-sm text-on-surface-variant">
+                    Mobile beauty and appearance services delivered directly to customers.
+                </p>
+            </div>
+
+            <div class="bg-white p-8 rounded-3xl shadow-premium">
+                <h4 class="font-bold text-primary text-xl mb-3">More Coming</h4>
+                <p class="text-sm text-on-surface-variant">
+                    New products and services continuously being developed.
+                </p>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- Founder Section -->
+<section class="py-section-gap px-margin-desktop max-w-container-max mx-auto">
+
+    <div class="bg-primary text-white rounded-[40px] p-12 text-center">
+
+        <h2 class="text-4xl font-bold mb-6">
+            Leadership
+        </h2>
+
+        <h3 class="text-2xl font-bold mb-3">
+            Mba Prince Chinyeaka
+        </h3>
+
+        <p class="text-white/80 text-lg mb-6">
+            Founder & CEO, RAW B2C LTD
+        </p>
+
+        <p class="max-w-3xl mx-auto text-white/90 leading-relaxed">
+            Driven by innovation, entrepreneurship, and community impact,
+            Prince founded RAW B2C LTD to build businesses that solve
+            practical problems while creating opportunities for people
+            across Nigeria and Africa.
+        </p>
+
+    </div>
+
 </section>
 
 <?php include '../includes/footer.php'; ?>

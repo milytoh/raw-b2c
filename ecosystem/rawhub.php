@@ -133,9 +133,14 @@
 
 
 <!-- Logo -->
-<div class="font-headline-md text-headline-md font-bold text-primary">
-RAW HUB
-</div>
+<!-- Logo -->
+<a href="/raw-b2c/index.php" class="flex items-center gap-3">
+    <img
+        src="/raw-b2c/assets/images/rawhub-logo.png"
+        alt="RAW HUB Logo"
+        class="h-16 w-auto md:h-14 object-contain"
+    >
+</a>
 
 
 
@@ -285,10 +290,10 @@ Book a Service
 </header>
 <main>
 <!-- Hero Section -->
-<section class="relative min-h-screen flex items-center pt-20 md:pt-20 overflow-hidden mt-0">
+<section class="relative min-h-screen flex items-center  pt-20 md:pt-20 overflow-hidden mt-0">
 <div class="absolute inset-0 z-0">
-<div class="w-full h-full opacity-30" data-alt="A high-resolution wide shot of a modern, sun-drenched Nigerian living room with premium wooden furniture and lush indoor plants. In the background, a professional technician in a clean uniform is checking an appliance while a homeowner uses a sleek smartphone app. The lighting is warm and natural, evoking a sense of trust, safety, and domestic harmony. The overall aesthetic is polished and high-end corporate." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuA72nmPpe7ozmGcUzXQ--2H7imSTtIbv5kGetDZY4tUrLhPV2y2TiEa0N2a0EjWXr4wsf7dgEwhKfrvHuuEJOqH1mUMuU3GxV8RYXqY1RB40Nf7mPneSxWfEMKmyQ0ApuZDcwsFKEFdT7VQPczImwgcXuy4s9cX3qFP-1rxZv1kzZzINecUWH9-9wSDmzzY0fjhu5t5IIEFb4P14ezKv8frqyfbmz2WoS5nH0O8rycybANoUibOwmcB06qbW3LIPE5OGwLynH1fO9c')"></div>
-<div class="absolute inset-0 bg-gradient-to-r from-surface via-surface/80 to-transparent"></div>
+<div class="w-full h-full opacity-30" data-alt="A high-resolution wide shot of a modern, sun-drenched Nigerian living room with premium wooden furniture and lush indoor plants. In the background, a professional technician in a clean uniform is checking an appliance while a homeowner uses a sleek smartphone app. The lighting is warm and natural, evoking a sense of trust, safety, and domestic harmony. The overall aesthetic is polished and high-end corporate." style="background-image: url('../assets/images/rawhub.jfif')"></div>
+<div class="absolute inset-0 bg-gradient-to-r from-surface via-surface/50 to-transparent"></div>
 </div>
 <div class="relative z-10 max-w-container-max mx-auto px-6 md:px-margin-desktop grid md:grid-cols-2 gap-gutter items-center">
 <div class="reveal">
@@ -602,38 +607,7 @@ Book a Service
 </section>
 </main>
 <!-- Footer -->
-<footer class="w-full py-section-gap px-margin-desktop bg-surface-container border-t border-outline-variant">
-<div class="flex flex-col md:flex-row justify-between items-start max-w-container-max mx-auto gap-gutter">
-<div class="max-w-xs mb-10 md:mb-0">
-<div class="font-headline-md text-headline-md font-bold text-primary mb-4">RAW HUB</div>
-<p class="text-on-surface-variant text-sm leading-relaxed">
-                    Connecting premium households to verified essential services. A product of RAW B2C LTD.
-                </p>
-</div>
-<div class="grid grid-cols-2 sm:grid-cols-3 gap-20">
-<div class="flex flex-col gap-4">
-<h6 class="font-bold text-primary">Company</h6>
-<a class="text-on-surface-variant hover:text-primary transition-all text-sm" href="#">Privacy Policy</a>
-<a class="text-on-surface-variant hover:text-primary transition-all text-sm" href="#">Terms of Service</a>
-<a class="text-on-surface-variant hover:text-primary transition-all text-sm" href="#">Careers</a>
-</div>
-<div class="flex flex-col gap-4">
-<h6 class="font-bold text-primary">Support</h6>
-<a class="text-on-surface-variant hover:text-primary transition-all text-sm" href="#">FAQ</a>
-<a class="text-on-surface-variant hover:text-primary transition-all text-sm" href="#">Contact Us</a>
-<a class="text-on-surface-variant hover:text-primary transition-all text-sm" href="#">Help Center</a>
-</div>
-</div>
-</div>
-<div class="max-w-container-max mx-auto mt-20 pt-8 border-t border-outline-variant/30 flex flex-col md:flex-row justify-between items-center gap-6">
-<p class="text-on-surface-variant font-label-sm text-label-sm text-center">© 2026 RAW HUB. Powered by RAW B2C LTD. All rights reserved.</p>
-<div class="flex gap-6">
-<span class="material-symbols-outlined text-on-surface-variant hover:text-primary cursor-pointer transition-colors">face_nod</span>
-<span class="material-symbols-outlined text-on-surface-variant hover:text-primary cursor-pointer transition-colors">share</span>
-<span class="material-symbols-outlined text-on-surface-variant hover:text-primary cursor-pointer transition-colors">linked_camera</span>
-</div>
-</div>
-</footer>
+<?php include '../includes/footer.php'; ?>
 <script>
 
     function toggleHubMenu(){

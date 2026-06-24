@@ -11,6 +11,20 @@
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+
+    <link rel="icon" href="/raw-b2c/assets/favicon/favicon.ico">
+
+    <link rel="icon" type="image/png" sizes="32x32"
+    href="/raw-b2c/assets/favicon/favicon-32x32.png">
+
+    <link rel="icon" type="image/png" sizes="16x16"
+    href="/raw-b2c/assets/favicon/favicon-16x16.png">
+
+    <link rel="apple-touch-icon"
+    href="/raw-b2c/assets/favicon/apple-touch-icon.png">
+
+    <link rel="manifest"
+  href="/raw-b2c/assets/favicon/site.webmanifest">
     
     <!-- Tailwind Config -->
     <script id="tailwind-config">

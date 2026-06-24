@@ -595,9 +595,12 @@ Building modern platforms, products, and services that connect people, businesse
 </div>
 </div>
 <div class="mt-12 text-center reveal active">
-<button class="bg-primary text-on-primary px-10 py-4 rounded-xl font-bold shadow-lg hover:shadow-xl hover:-translate-y-0.5 transition-all">
-                View All Projects
-            </button>
+<a 
+    href="pages/gallery.php"
+    class="inline-block bg-primary text-on-primary px-10 py-4 rounded-xl font-bold shadow-lg hover:shadow-xl hover:-translate-y-0.5 transition-all"
+>
+    View All Projects
+</a>
 </div>
 </section>
 <!-- Updates / Blog Section -->

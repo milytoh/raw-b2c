@@ -30,6 +30,7 @@ include '../includes/navbar.php';
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 <script id="tailwind-config">
         tailwind.config = {
             darkMode: "class",
@@ -254,11 +255,25 @@ include '../includes/navbar.php';
 <h2 class="font-headline-md text-3xl text-primary">Connect With Us</h2>
 <p class="text-on-surface-variant font-body-lg">Stay updated with our latest ventures and industry insights through our social channels.</p>
 <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
-<a class="glass-card p-4 rounded-2xl flex flex-col items-center gap-3 hover:bg-primary group transition-all" href="#" target="_blank">
+<a class="glass-card p-4 rounded-2xl flex flex-col items-center gap-3 hover:bg-primary group transition-all" href="https://www.facebook.com/share/1YDMbczg9x/" target="_blank">
 <div class="w-10 h-10 flex items-center justify-center text-primary group-hover:text-white transition-colors">
 <span class="material-symbols-outlined text-2xl">face_nod</span>
 </div>
 <span class="text-label-sm group-hover:text-white">Facebook</span>
+</a>
+<a 
+class="glass-card p-4 rounded-2xl flex flex-col items-center gap-3 hover:bg-primary group transition-all"
+href="https://www.tiktok.com/@rawhub.app?_r=1&_t=ZS-97RXynTkSn6"
+target="_blank">
+
+    <div class="w-10 h-10 flex items-center justify-center text-primary group-hover:text-white transition-colors">
+        <i class="fab fa-tiktok text-2xl"></i>
+    </div>
+
+    <span class="text-label-sm group-hover:text-white">
+        TikTok
+    </span>
+
 </a>
 <a class="glass-card p-4 rounded-2xl flex flex-col items-center gap-3 hover:bg-primary group transition-all" href="#" target="_blank">
 <div class="w-10 h-10 flex items-center justify-center text-primary group-hover:text-white transition-colors">
