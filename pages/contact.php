@@ -200,7 +200,7 @@ include '../includes/navbar.php';
 <span class="material-symbols-outlined text-3xl">mail</span>
 </div>
 <h3 class="font-headline-md text-headline-md mb-2">Email</h3>
-<p class="text-on-surface-variant">support@rawb2c.com<br/>support@rawb2c.com</p>
+<p class="text-on-surface-variant">info@rawb2c.com<br/>info@rawb2c.com</p>
 </div>
 <!-- Hours -->
 <div class="glass-card p-8 rounded-[32px] shadow-sm hover:scale-105 transition-transform duration-300 flex flex-col items-center text-center reveal" style="transition-delay: 300ms;">

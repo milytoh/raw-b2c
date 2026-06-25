@@ -99,12 +99,23 @@ CREATE TABLE contact_messages (
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
+-- @Rawb2c.com
 
 -- INSERT INTO admins (email, password_hash)
 -- VALUES (
 -- 'admin@rawb2c.com',
 -- '$2y$10$TKh8H1.PfQx37YgCzwiKb.KjNyWgaHb9cbcoQgdIVFlYg7B77UdFm'
 -- );
+
+INSERT INTO admins
+(email, password_hash)
+VALUES
+(
+'offcialraw247@gmail.com',
+'$2y$10$ZwhMpotxIFOnpdDI3vNy8evqbZNJyd/F3mX5AV5NqWB2jvPJtrzuW'
+);
+
+RawB2C@Admin2027!
 
 -- UPDATE admins
 -- SET password_hash='$2y$10$dDZ0uBmInldLpghTvxVvXudsC9J4cgUXHKv7rxm5tKiOIni.qLVx6'
