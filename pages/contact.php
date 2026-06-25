@@ -15,6 +15,9 @@ $footer_products = 'product.php';
 $footer_blog = 'blog.php';
 $footer_contact = '#';
 
+
+
+
 include '../includes/header.php';
 include '../includes/navbar.php';
 ?>
@@ -181,7 +184,7 @@ include '../includes/navbar.php';
 <span class="material-symbols-outlined text-3xl">location_on</span>
 </div>
 <h3 class="font-headline-md text-headline-md mb-2">Office Address</h3>
-<p class="text-on-surface-variant">Plot 12, Corporate Way, Victoria Island, Lagos, Nigeria</p>
+<p class="text-on-surface-variant">umuahia, umudike</p>
 </div>
 <!-- Phone -->
 <div class="glass-card p-8 rounded-[32px] shadow-sm hover:scale-105 transition-transform duration-300 flex flex-col items-center text-center reveal" style="transition-delay: 100ms;">
@@ -189,7 +192,7 @@ include '../includes/navbar.php';
 <span class="material-symbols-outlined text-3xl">call</span>
 </div>
 <h3 class="font-headline-md text-headline-md mb-2">Phone</h3>
-<p class="text-on-surface-variant">+234 800 123 4567<br/>+234 900 765 4321</p>
+<p class="text-on-surface-variant">+234 816 311 8975<br/>+234 816 311 8975</p>
 </div>
 <!-- Email -->
 <div class="glass-card p-8 rounded-[32px] shadow-sm hover:scale-105 transition-transform duration-300 flex flex-col items-center text-center reveal" style="transition-delay: 200ms;">
@@ -197,7 +200,7 @@ include '../includes/navbar.php';
 <span class="material-symbols-outlined text-3xl">mail</span>
 </div>
 <h3 class="font-headline-md text-headline-md mb-2">Email</h3>
-<p class="text-on-surface-variant">info@rawb2c.com<br/>support@rawb2c.com</p>
+<p class="text-on-surface-variant">support@rawb2c.com<br/>support@rawb2c.com</p>
 </div>
 <!-- Hours -->
 <div class="glass-card p-8 rounded-[32px] shadow-sm hover:scale-105 transition-transform duration-300 flex flex-col items-center text-center reveal" style="transition-delay: 300ms;">
@@ -205,7 +208,7 @@ include '../includes/navbar.php';
 <span class="material-symbols-outlined text-3xl">schedule</span>
 </div>
 <h3 class="font-headline-md text-headline-md mb-2">Working Hours</h3>
-<p class="text-on-surface-variant">Mon - Fri: 8:00 AM - 5:00 PM<br/>Weekends: Closed</p>
+<p class="text-on-surface-variant">Mon - Fri: 8:00 AM - 5:00 PM<br/>Weekends: open</p>
 </div>
 </div>
 </section>
@@ -213,43 +216,145 @@ include '../includes/navbar.php';
 <section class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-section-gap">
 <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
 <!-- Form -->
+ <!-- Success Message -->
+
+
+<!-- Form -->
 <div class="lg:col-span-7 bg-white p-8 md:p-12 rounded-[32px] shadow-sm reveal">
-<h2 class="font-headline-md text-3xl mb-8 text-primary">Send us a Message</h2>
-<form class="space-y-8" id="contactForm">
-<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-<div class="relative floating-label-input">
-<input class="w-full bg-surface-container-low border-0 rounded-xl p-4 focus:ring-2 focus:ring-primary transition-all peer" id="name" placeholder=" " type="text"/>
-<label class="absolute left-4 top-4 text-on-surface-variant pointer-events-none transition-all" for="name">Full Name</label>
+
+<!-- Success Message -->
+<?php if(isset($_GET['success'])): ?>
+<div class="mb-6 p-4 bg-green-100 text-green-700 rounded-xl flex items-center gap-2">
+    <span class="material-symbols-outlined">check_circle</span>
+    Thank you! Your message has been sent successfully.
 </div>
-<div class="relative floating-label-input">
-<input class="w-full bg-surface-container-low border-0 rounded-xl p-4 focus:ring-2 focus:ring-primary transition-all peer" id="email" placeholder=" " type="email"/>
-<label class="absolute left-4 top-4 text-on-surface-variant pointer-events-none transition-all" for="email">Email Address</label>
+<?php endif; ?>
+
+    <h2 class="font-headline-md text-3xl mb-8 text-primary">
+        Send us a Message
+    </h2>
+
+    <form
+        id="contactForm"
+        class="space-y-8"
+        method="POST"
+        action="contact-process.php">
+
+        <!-- Name & Email -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+
+            <div class="relative floating-label-input">
+                <input
+                    class="w-full bg-surface-container-low border-0 rounded-xl p-4 focus:ring-2 focus:ring-primary transition-all peer"
+                    id="name"
+                    name="name"
+                    type="text"
+                    placeholder=" "
+                    required>
+
+                <label
+                    class="absolute left-4 top-4 text-on-surface-variant pointer-events-none transition-all"
+                    for="name">
+                    Full Name
+                </label>
+            </div>
+
+            <div class="relative floating-label-input">
+                <input
+                    class="w-full bg-surface-container-low border-0 rounded-xl p-4 focus:ring-2 focus:ring-primary transition-all peer"
+                    id="email"
+                    name="email"
+                    type="email"
+                    placeholder=" "
+                    required>
+
+                <label
+                    class="absolute left-4 top-4 text-on-surface-variant pointer-events-none transition-all"
+                    for="email">
+                    Email Address
+                </label>
+            </div>
+
+        </div>
+
+        <!-- Phone & Subject -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+
+            <div class="relative floating-label-input">
+                <input
+                    class="w-full bg-surface-container-low border-0 rounded-xl p-4 focus:ring-2 focus:ring-primary transition-all peer"
+                    id="phone"
+                    name="phone"
+                    type="tel"
+                    placeholder=" "
+                    required>
+
+                <label
+                    class="absolute left-4 top-4 text-on-surface-variant pointer-events-none transition-all"
+                    for="phone">
+                    Phone Number
+                </label>
+            </div>
+
+            <div class="relative floating-label-input">
+                <input
+                    class="w-full bg-surface-container-low border-0 rounded-xl p-4 focus:ring-2 focus:ring-primary transition-all peer"
+                    id="subject"
+                    name="subject"
+                    type="text"
+                    placeholder=" "
+                    required>
+
+                <label
+                    class="absolute left-4 top-4 text-on-surface-variant pointer-events-none transition-all"
+                    for="subject">
+                    Subject
+                </label>
+            </div>
+
+        </div>
+
+        <!-- Message -->
+        <div class="relative floating-label-input">
+
+            <textarea
+                class="w-full bg-surface-container-low border-0 rounded-xl p-4 focus:ring-2 focus:ring-primary transition-all peer"
+                id="message"
+                name="message"
+                rows="6"
+                placeholder=" "
+                required></textarea>
+
+            <label
+                class="absolute left-4 top-4 text-on-surface-variant pointer-events-none transition-all"
+                for="message">
+                Your Message
+            </label>
+
+        </div>
+
+        <!-- Submit Button -->
+        <button
+            class="w-full md:w-auto bg-primary text-on-primary px-12 py-4 rounded-xl font-bold hover:shadow-xl transition-all flex items-center justify-center gap-2 group"
+            type="submit">
+
+            <span id="btnText">
+                Send Message
+            </span>
+
+            <span
+                class="material-symbols-outlined transition-transform group-hover:translate-x-1"
+                id="btnIcon">
+                send
+            </span>
+
+        </button>
+
+    </form>
+
 </div>
-</div>
-<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-<div class="relative floating-label-input">
-<input class="w-full bg-surface-container-low border-0 rounded-xl p-4 focus:ring-2 focus:ring-primary transition-all peer" id="phone" placeholder=" " type="tel"/>
-<label class="absolute left-4 top-4 text-on-surface-variant pointer-events-none transition-all" for="phone">Phone Number</label>
-</div>
-<div class="relative floating-label-input">
-<input class="w-full bg-surface-container-low border-0 rounded-xl p-4 focus:ring-2 focus:ring-primary transition-all peer" id="subject" placeholder=" " type="text"/>
-<label class="absolute left-4 top-4 text-on-surface-variant pointer-events-none transition-all" for="subject">Subject</label>
-</div>
-</div>
-<div class="relative floating-label-input">
-<textarea class="w-full bg-surface-container-low border-0 rounded-xl p-4 focus:ring-2 focus:ring-primary transition-all peer" id="message" placeholder=" " rows="4"></textarea>
-<label class="absolute left-4 top-4 text-on-surface-variant pointer-events-none transition-all" for="message">Your Message</label>
-</div>
-<button class="w-full md:w-auto bg-primary text-on-primary px-12 py-4 rounded-xl font-bold hover:shadow-xl transition-all flex items-center justify-center gap-2 group" type="submit">
-<span id="btnText">Send Message</span>
-<span class="material-symbols-outlined transition-transform group-hover:translate-x-1" id="btnIcon">send</span>
-</button>
-</form>
-<div class="hidden mt-6 p-4 bg-secondary-container text-on-secondary-container rounded-xl flex items-center gap-2" id="successMessage">
-<span class="material-symbols-outlined">check_circle</span>
-                        Thank you! Your message has been sent successfully.
-                    </div>
-</div>
+
+
 <!-- Social Media Cluster -->
 <div class="lg:col-span-5 space-y-8 reveal" style="transition-delay: 200ms;">
 <h2 class="font-headline-md text-3xl text-primary">Connect With Us</h2>
@@ -439,33 +544,8 @@ target="_blank">
             });
         });
 
-        // Form Submission Logic
-        const contactForm = document.getElementById('contactForm');
-        const successMessage = document.getElementById('successMessage');
-        const btnText = document.getElementById('btnText');
-        const btnIcon = document.getElementById('btnIcon');
-
-        contactForm.addEventListener('submit', (e) => {
-            e.preventDefault();
-            
-            // Loading State
-            btnText.textContent = 'Sending...';
-            btnIcon.textContent = 'autorenew';
-            btnIcon.classList.add('animate-spin');
-            
-            // Simulate API Call
-            setTimeout(() => {
-                contactForm.reset();
-                btnText.textContent = 'Send Message';
-                btnIcon.textContent = 'send';
-                btnIcon.classList.remove('animate-spin');
-                
-                successMessage.classList.remove('hidden');
-                setTimeout(() => {
-                    successMessage.classList.add('hidden');
-                }, 5000);
-            }, 2000);
-        });
+     
+       
 
         // Simple Parallax for Hero
         window.addEventListener('scroll', () => {

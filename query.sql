@@ -89,6 +89,16 @@ ADD reward_code VARCHAR(50) UNIQUE AFTER id,
 ADD customer_phone VARCHAR(50) AFTER customer_name,
 ADD claimed_at TIMESTAMP NULL AFTER created_at;
 
+CREATE TABLE contact_messages (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(255),
+    email VARCHAR(255),
+    phone VARCHAR(50),
+    subject VARCHAR(255),
+    message TEXT,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
 
 -- INSERT INTO admins (email, password_hash)
 -- VALUES (
