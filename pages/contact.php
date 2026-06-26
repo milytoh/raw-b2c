@@ -184,7 +184,7 @@ include '../includes/navbar.php';
 <span class="material-symbols-outlined text-3xl">location_on</span>
 </div>
 <h3 class="font-headline-md text-headline-md mb-2">Office Address</h3>
-<p class="text-on-surface-variant">umuahia, umudike</p>
+<p class="text-on-surface-variant">urban 111, POWA Plaza, by finbarrs Rd, Warri St, Umuahia, 440233, Abia</p>
 </div>
 <!-- Phone -->
 <div class="glass-card p-8 rounded-[32px] shadow-sm hover:scale-105 transition-transform duration-300 flex flex-col items-center text-center reveal" style="transition-delay: 100ms;">
@@ -468,9 +468,8 @@ target="_blank">
 </div>
 <div class="accordion-content">
 <div class="px-6 pb-6 text-on-surface-variant">
-                                You can reach us via our contact form above, email us directly at info@rawb2c.com, or visit our office in Victoria Island, Lagos. We are also active on WhatsApp for urgent inquiries.
+                                You can reach us via our contact form above, email us directly at info@rawb2c.com, or visit our office at urban 111, POWA Plaza, by finbarrs Rd, Warri St, Umuahia, 440233, Abia. We are also active on WhatsApp for urgent inquiries.
                             </div>
-</div>
 </div>
 <!-- Accordion Item 2 -->
 <div class="accordion-item glass-card rounded-2xl overflow-hidden cursor-pointer">

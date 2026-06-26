@@ -260,11 +260,6 @@ How It Works
 </a>
 
 
-<a 
-href="#partners"
-class="block text-on-surface-variant hover:text-primary mobile-link">
-Partners
-</a>
 
 
 <a 
@@ -299,18 +294,24 @@ Book a Service
 <div class="reveal">
 <span class="inline-block px-4 py-1 rounded-full bg-secondary-container text-on-secondary-container font-label-sm text-label-sm mb-6">Your Everyday Solution</span>
 <h1 class="font-display-lg text-display-lg-mobile md:text-display-lg text-primary leading-tight mb-6">
-                        RAW HUB: Empowering Your <span class="text-secondary">Household</span>
+                        RAW HUB: Your everyday <span class="text-secondary">Solution</span>
 </h1>
 <p class="font-body-lg text-body-lg text-on-surface-variant mb-8 max-w-lg">
-                        Connecting households to reliable workmen, errands, and essential services — all in one trusted hub. Powered by RAW B2C LTD.
+                  
+
+From repairs to cleaning, shopping, errands, and skilled professionals — RAW HUB helps you get things done without the stress.One trusted place for all your household needs.
                     </p>
 <div class="flex flex-wrap gap-4">
-<button class="bg-primary text-on-primary px-10 py-4 rounded-xl font-bold shadow-lg hover:shadow-primary-container/20 transition-all flex items-center gap-2">
-                            Explore Services <span class="material-symbols-outlined">arrow_forward</span>
-</button>
-<button class="border-2 border-primary text-primary px-10 py-4 rounded-xl font-bold hover:bg-primary-container/10 transition-all">
-                            Partner With Us
-                        </button>
+<a href="pages/product.php"
+   class="inline-flex items-center gap-2 bg-primary text-on-primary px-10 py-4 rounded-xl font-bold shadow-lg hover:shadow-primary-container/20 transition-all">
+    Explore Products
+    <span class="material-symbols-outlined">arrow_forward</span>
+</a>
+
+<a href="pages/contact.php"
+   class="inline-flex items-center justify-center border-2 border-primary text-primary px-10 py-4 rounded-xl font-bold hover:bg-primary-container/10 transition-all">
+    Contact Us
+</a>
 </div>
 </div>
 <div class="relative hidden md:block h-[600px]">
@@ -594,9 +595,11 @@ Book a Service
 <h2 class="font-display-lg text-display-lg-mobile md:text-display-lg mb-8">Need Something Done?</h2>
 <p class="text-xl md:text-2xl mb-12 opacity-80 max-w-2xl mx-auto">Join thousands of households across Nigeria who trust RAW HUB for their everyday needs.</p>
 <div class="flex flex-col sm:flex-row gap-6 justify-center">
-<button class="bg-secondary text-on-secondary px-12 py-5 rounded-2xl font-bold text-xl hover:scale-105 active:scale-95 transition-all shadow-xl">
-                                Book A Service Now
-                            </button>
+<a href="https://wa.me/2348163118975?text=Hello%20RAW%20B2C%20LTD,%20I%20would%20like%20to%20book%20a%20service."
+   target="_blank"
+   class="inline-flex items-center justify-center bg-secondary text-on-secondary px-12 py-5 rounded-2xl font-bold text-xl hover:scale-105 active:scale-95 transition-all shadow-xl">
+    WhatsApp Direct
+</a>
 <button class="bg-white/10 backdrop-blur-md border border-white/20 text-on-primary px-12 py-5 rounded-2xl font-bold text-xl hover:bg-white/20 transition-all">
                                 Download Mobile App
                             </button>

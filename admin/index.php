@@ -84,7 +84,7 @@ usort($activities, function ($a, $b) {
 /* Only latest 4 */
 $activities = array_slice($activities, 0, 4);
 
-?> -->
+?> 
 
 
 

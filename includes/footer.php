@@ -166,7 +166,7 @@
 
                         <a href="tel:+2348000000000"
                            class="hover:text-primary-fixed transition-colors">
-                            +234 XXX XXX XXXX
+                            +234 816 311 8975
                         </a>
                     </li>
 

@@ -31,12 +31,46 @@ include 'includes/header.php';
             </div>
             
             <div>
-                <label class="block text-sm font-bold text-primary mb-2">Password</label>
-                <div class="relative">
-                    <span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-on-surface-variant/50">lock</span>
-                    <input type="password" name="password" required class="w-full bg-surface border border-outline-variant/30 rounded-xl pl-12 pr-4 py-3 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all" placeholder="••••••••">
-                </div>
-            </div>
+    <label class="block text-sm font-bold text-primary mb-2">
+        Password
+    </label>
+
+    <div class="relative">
+
+        <!-- Lock Icon -->
+        <span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-on-surface-variant/50">
+            lock
+        </span>
+
+
+        <input 
+            type="password" 
+            name="password"
+            id="password"
+            required
+            class="w-full bg-surface border border-outline-variant/30 rounded-xl pl-12 pr-12 py-3 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all"
+            placeholder="Enter your password"
+        >
+
+
+        <!-- Eye Icon -->
+        <button 
+            type="button"
+            onclick="togglePassword()"
+            class="absolute right-4 top-1/2 -translate-y-1/2 text-on-surface-variant/50 hover:text-primary transition"
+        >
+
+            <span 
+                class="material-symbols-outlined"
+                id="eyeIcon"
+            >
+                visibility
+            </span>
+
+        </button>
+
+    </div>
+</div>
             
             <div class="flex items-center justify-between">
                 <label class="flex items-center gap-2 cursor-pointer">
@@ -53,6 +87,32 @@ include 'includes/header.php';
         </form>
     </div>
 </div>
+
+<script>
+
+function togglePassword(){
+
+    const password = document.getElementById("password");
+    const eyeIcon = document.getElementById("eyeIcon");
+
+
+    if(password.type === "password"){
+
+        password.type = "text";
+
+        eyeIcon.textContent = "visibility_off";
+
+    }else{
+
+        password.type = "password";
+
+        eyeIcon.textContent = "visibility";
+
+    }
+
+}
+
+</script>
  
 <?php include 'includes/footer.php'; ?>
 

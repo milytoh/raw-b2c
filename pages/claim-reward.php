@@ -144,7 +144,7 @@ Reward Code: ".$reward['reward_code']
             // CHANGE NUMBER HERE
 
             $whatsapp =
-            "https://wa.me/2347016928108?text=".$text;
+            "https://wa.me/2348163118975?text=".$text;
 
 
 

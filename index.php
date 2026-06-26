@@ -102,7 +102,7 @@ class="font-body-lg text-white/90 max-w-2xl hero-text-animate"
 style="animation-delay:.4s">
 
 
-RAW B2C LTD is building innovative businesses that simplify everyday life — from technology and lifestyle solutions to trusted services, products, and community-driven platforms across Africa.
+RAW B2C LTD is building innovative businesses across technology, lifestyle, beauty, logistics, food, and household services to improve everyday life across Africa
 
 
 </p>
@@ -117,7 +117,7 @@ style="animation-delay:.6s;">
 
 
 <a 
-href="pages/product.php"
+href="#products"
 class="bg-white text-primary px-8 py-4 rounded-xl font-bold text-lg hover:scale-105 transition flex items-center gap-2">
 
 Explore Our Ecosystem

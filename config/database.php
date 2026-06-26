@@ -1,10 +1,15 @@
 <?php
 // config/database.php
 
+// $host = 'localhost';
+// $dbname = 'u226964222_rawb2c';
+// $username = 'u226964222_admin'; // XAMPP default username
+// $password = '@Rawb2c.com'; // XAMPP default password is empty
+
 $host = 'localhost';
-$dbname = 'u226964222_rawb2c';
-$username = 'u226964222_admin'; // XAMPP default username
-$password = '@Rawb2c.com'; // XAMPP default password is empty
+$dbname = 'rawb2c_db';
+$username = 'root'; // XAMPP default username
+$password = ''; // XAMPP default password is empty
 
 try {
     // Create a new PDO instance

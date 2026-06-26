@@ -111,7 +111,7 @@ INSERT INTO admins
 (email, password_hash)
 VALUES
 (
-'offcialraw247@gmail.com',
+'officialraw247@gmail.com',
 '$2y$10$ZwhMpotxIFOnpdDI3vNy8evqbZNJyd/F3mX5AV5NqWB2jvPJtrzuW'
 );
 
