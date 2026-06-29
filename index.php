@@ -319,7 +319,7 @@ src="assets/images/raw-hero.jfif">
 <!-- Mi Boo -->
     <div class="reveal group bg-white rounded-[24px] overflow-hidden shadow-premium shadow-premium-hover transition-all duration-500 delay-100 active">
     <div class="h-64 overflow-hidden">
-    <img alt="Mi Boo" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDbS_XMmvx7NiwpLe3KHosLfWqyC0fZtQWMzN8YPiDyrz2zndqqqh7ng8qIpaW7VfnPOvP0G7LwSPy1pUEOsXxGrg7OwlsRX_wSIXeCcQOEiOteNsiUMldzf2rm11hJSl1ljmioX95RHOn733lcCOHFd1tz-1KvxChgrK96L3HksklpxHymnUqGo9QztnnaqKQLpLH4ZxtXuAQRIhlY3lrOe9lR_ViLyglNeF5GdAlN8yYTHShDygWjgf0-6y8h6FxHXEAQZtnu5Mw"/>
+    <img alt="Mi Boo" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" src="assets/images/miboo.jfif"/>
     </div>
     <div class="p-8">
     <div class="flex justify-between items-start mb-4">
@@ -341,7 +341,7 @@ src="assets/images/raw-hero.jfif">
 <!-- Mi Look -->
     <div class="reveal group bg-white rounded-[24px] overflow-hidden shadow-premium shadow-premium-hover transition-all duration-500 delay-200 active">
     <div class="h-64 overflow-hidden">
-    <img alt="Mi Look" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAFdUeKCmaBD1_SxBpUNO3MAynd6UFBz0XEfV9JC6Z76PAcQe5TrHF-kfjF-VO8Gx5kRRSd-EgkSbmghAoYn6hOxwhI0nzmOuEz9iLtVl-v6vsyFihtSov56nOljhlO0cm85SFDTDJs-qSt061sjxXZiVuBhxx1Uq2zKAC0dPGefRA7-X4CNDh5v98WYghHGxSwvkQzjfZQydY2q0ZX32mzXrEdUrEYsD_YIUuBkpHIT5wtt_aF27O0TeXVLY_PLwEpE4b76C8rvDA">
+    <img alt="Mi Look" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" src="assets/images/milook.jfif">
     </div>
     <div class="p-8">
     <div class="flex justify-between items-start mb-4">

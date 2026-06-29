@@ -1,4 +1,27 @@
 
+
+<!-- Cookie Consent Banner -->
+<div id="cookie-consent" class="fixed bottom-0 left-0 right-0 bg-white border-t border-slate-200 shadow-2xl p-5 md:p-6 z-50 hidden">
+  <div class="max-w-4xl mx-auto flex flex-col md:flex-row items-start md:items-center gap-4 md:gap-6">
+    <div class="flex-1 text-sm text-slate-600">
+      We use cookies and similar technologies to improve your experience. 
+      By continuing to use RAWB2C, you agree to our 
+      <a href="/pages/privacy-policy.php" class="text-primary hover:underline">Privacy Policy</a> and 
+      <a href="/pages/terms-of-service.php" class="text-primary hover:underline">Terms of Service</a>.
+    </div>
+    
+    <div class="flex flex-col sm:flex-row gap-3 w-full md:w-auto">
+      <button onclick="acceptCookies()" 
+              class="px-8 py-3 bg-primary text-white rounded-2xl font-semibold hover:bg-[#04956f] transition">
+        Accept All
+      </button>
+      <button onclick="declineCookies()" 
+              class="px-6 py-3 border border-slate-300 rounded-2xl font-medium hover:bg-slate-50 transition">
+        Decline
+      </button>
+    </div>
+  </div>
+</div>
 <!-- Footer Section -->
 <footer class="bg-primary text-on-primary py-section-gap">
 
@@ -190,12 +213,12 @@
 
             <div class="flex flex-wrap justify-center gap-6">
 
-                <a href="#"
+                <a href="/privacy-policy.php"
                    class="hover:text-primary-fixed transition-colors">
                     Privacy Policy
                 </a>
 
-                <a href="#"
+                <a href="/pages/terms-of-service.php"
                    class="hover:text-primary-fixed transition-colors">
                     Terms of Service
                 </a>
@@ -210,6 +233,30 @@
         </div>
 
     </div>
+<script>
+      ///terms and conditions
+        function checkCookies() {
+  if (!localStorage.getItem('cookiesAccepted')) {
+    document.getElementById('cookie-consent').classList.remove('hidden');
+  }
+}
+
+function acceptCookies() {
+  localStorage.setItem('cookiesAccepted', 'true');
+  document.getElementById('cookie-consent').classList.add('hidden');
+  // You can also set real cookies here if needed
+}
+
+function declineCookies() {
+  localStorage.setItem('cookiesAccepted', 'false');
+  document.getElementById('cookie-consent').classList.add('hidden');
+  // Optionally show a minimal notice
+}
+
+// Run on page load
+window.addEventListener('load', checkCookies);
+    </script>
 
 </footer>
+
 
